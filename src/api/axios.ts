@@ -11,6 +11,7 @@ import includes from 'lodash/includes'
 const axiosInstance = axios.create({
   baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
   timeout: ResultEnum.TIMEOUT,
+  headers: {'X-Org-Name': 'oneshare'}
 })
 
 axiosInstance.interceptors.request.use(
@@ -58,7 +59,7 @@ axiosInstance.interceptors.response.use(
       redirectErrorPage(code)
       return Promise.resolve(res.data)
     }
-    
+
     // 提示错误
     window['$message'].error(window['$t']((res.data as any).msg))
     return Promise.resolve(res.data)

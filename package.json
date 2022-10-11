@@ -3,7 +3,7 @@
   "version": "2.0.91",
   "scripts": {
     "dev": "vite --host",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build --base=/dashboard/static/",
     "preview": "vite preview",
     "new": "plop --plopfile ./plop/plopfile.js",
     "postinstall": "husky install",
