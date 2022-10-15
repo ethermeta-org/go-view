@@ -9,12 +9,10 @@ import {fetchAllowList} from './axios.config'
 import includes from 'lodash/includes'
 import Cookies from 'js-cookie';
 
-const sessionId = Cookies.get('session_id') || '';
 const axiosInstance = axios.create({
     baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
     timeout: ResultEnum.TIMEOUT,
     headers: {
-        'X-Openerp-Session-Id': sessionId,
         'X-Org-Name': 'oneshare'
     }
 })
