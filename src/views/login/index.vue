@@ -210,10 +210,11 @@ const handleSubmit = async (e: Event) => {
       }) as unknown as MyResponseType
       if(res.data) {
         const { tokenValue, tokenName } = res.data.token
-        const { nickname, username, id } = res.data.userinfo
+        const { nickname, username, id, avatar } = res.data.userinfo
 
         // 存储到 pinia 
         systemStore.setItem(SystemStoreEnum.USER_INFO, {
+          [SystemStoreUserInfoEnum.USER_AVATAR]: avatar,
           [SystemStoreUserInfoEnum.USER_TOKEN]: tokenValue,
           [SystemStoreUserInfoEnum.TOKEN_NAME]: tokenName,
           [SystemStoreUserInfoEnum.USER_ID]: id,

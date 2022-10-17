@@ -1,6 +1,7 @@
 export enum SystemStoreUserInfoEnum {
   USER_TOKEN = 'userToken',
   TOKEN_NAME = 'tokenName',
+  USER_AVATAR = 'avatar',
   USER_ID = 'userId',
   USER_NAME = 'userName',
   NICK_NAME = 'nickName',
@@ -8,6 +9,7 @@ export enum SystemStoreUserInfoEnum {
 
 export interface UserInfoType {
   [SystemStoreUserInfoEnum.USER_TOKEN]?: string,
+  [SystemStoreUserInfoEnum.USER_AVATAR]?: string,
   [SystemStoreUserInfoEnum.TOKEN_NAME]?: string,
   [SystemStoreUserInfoEnum.USER_ID]?: string,
   [SystemStoreUserInfoEnum.USER_NAME]?: string,
