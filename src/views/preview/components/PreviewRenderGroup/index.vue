@@ -28,7 +28,7 @@ import { CreateComponentGroupType } from '@/packages/index.d'
 import { animationsClass, getFilterStyle, getTransformStyle, getBlendModeStyle } from '@/utils'
 import { getSizeStyle, getComponentAttrStyle, getStatusStyle } from '../../utils'
 
-const props = defineProps({
+defineProps({
   groupData: {
     type: Object as PropType<CreateComponentGroupType>,
     required: true

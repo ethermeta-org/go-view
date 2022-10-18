@@ -1,9 +1,9 @@
 <template>
   <div
-    class="chart-item"
     v-for="(item, index) in localStorageInfo.componentList"
-    :class="animationsClass(item.styles.animations)"
     :key="item.id"
+    class="chart-item"
+    :class="animationsClass(item.styles.animations)"
     :style="{
       ...getComponentAttrStyle(item.attr, index),
       ...getFilterStyle(item.styles),
@@ -23,11 +23,11 @@
 
     <!-- 单组件 -->
     <component
-      v-else
       :is="item.chartConfig.chartKey"
-      :chartConfig="item"
-      :themeSetting="themeSetting"
-      :themeColor="themeColor"
+      v-else
+      :chart-config="item"
+      :theme-setting="themeSetting"
+      :theme-color="themeColor"
       :style="{ ...getSizeStyle(item.attr) }"
     ></component>
   </div>
@@ -36,8 +36,8 @@
 <script setup lang="ts">
 import { PropType, computed } from 'vue'
 import { ChartEditStorageType } from '../../index.d'
-import { PreviewRenderGroup } from '../PreviewRenderGroup/index'
-import { CreateComponentGroupType } from '@/packages/index.d'
+import PreviewRenderGroup from '../PreviewRenderGroup/index.vue'
+import type { CreateComponentGroupType } from '@/packages/index.d'
 import { chartColors } from '@/settings/chartThemes/index'
 import { animationsClass, getFilterStyle, getTransformStyle, getBlendModeStyle } from '@/utils'
 import { getSizeStyle, getComponentAttrStyle, getStatusStyle } from '../../utils'

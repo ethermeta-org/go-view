@@ -35,23 +35,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { PreviewRenderList } from './components/PreviewRenderList'
-import { getFilterStyle, routerTurnByName, getSessionStorage } from '@/utils'
+import { getFilterStyle, routerTurnByName } from '@/utils'
 import { getEditCanvasConfigStyle, getSessionStorageInfo } from './utils'
 import { PageEnum } from '@/enums/pageEnum'
-import { StorageEnum } from '@/enums/storageEnum'
 import { useScale } from './hooks/useScale.hook'
 import { useStore } from './hooks/useStore.hook'
 import { PreviewScaleEnum } from '@/enums/styleEnum'
 import { useComInstall } from './hooks/useComInstall.hook'
 import type { ChartEditStorageType } from './index.d'
 
-const storageList: ChartEditStorageType[] = getSessionStorage(
-  StorageEnum.GO_CHART_STORAGE_LIST
-)
-
 const localStorageInfo = await getSessionStorageInfo() as ChartEditStorageType
 
-// @ts-ignore
 if(localStorageInfo.isRelease === false) {
   routerTurnByName(PageEnum.REDIRECT_UN_PUBLISH_NAME, true, false)
 }
