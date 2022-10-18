@@ -8,9 +8,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { onBeforeMount } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-const route = useRoute()
+import { useRouter } from 'vue-router'
 const router = useRouter()
 const goHome = () => {
   router.replace({ path: '/' })

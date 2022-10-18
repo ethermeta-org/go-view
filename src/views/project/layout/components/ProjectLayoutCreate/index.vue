@@ -32,7 +32,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
-import { CreateModal } from './components/CreateModal/index'
+import CreateModal from './components/CreateModal/index.vue'
 import { icon } from '@/plugins'
 
 const { DuplicateIcon, DuplicateOutlineIcon } = icon.ionicons5

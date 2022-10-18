@@ -45,13 +45,11 @@
 </template>
 
 <script setup lang="ts">
-import { ProjectItemsCard } from '../ProjectItemsCard/index'
-import { ProjectItemsModalCard } from '../ProjectItemsModalCard/index'
-import { icon } from '@/plugins'
+import ProjectItemsCard from '../ProjectItemsCard/index.vue'
+import ProjectItemsModalCard from '../ProjectItemsModalCard/index.vue'
 import { useModalDataInit } from './hooks/useModal.hook'
 import { useDataListInit } from './hooks/useData.hook'
 
-const { CopyIcon, EllipsisHorizontalCircleSharpIcon } = icon.ionicons5
 const { modalData, modalShow, closeModal, previewHandle, resizeHandle, editHandle } = useModalDataInit()
 const { loading, paginat, list, changeSize, changePage, releaseHandle, deleteHandle } = useDataListInit()
 </script>

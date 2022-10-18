@@ -125,7 +125,7 @@ import { GoLangSelect } from '@/components/GoLangSelect'
 import { LayoutHeader } from '@/layout/components/LayoutHeader'
 import { LayoutFooter } from '@/layout/components/LayoutFooter'
 import { PageEnum } from '@/enums/pageEnum'
-import { StorageEnum } from '@/enums/storageEnum'
+// import { StorageEnum } from '@/enums/storageEnum'
 import { icon } from '@/plugins'
 import { routerTurnByName } from '@/utils'
 import { loginApi } from '@/api/path'
@@ -135,7 +135,7 @@ interface FormState {
   password: string
 }
 
-const { GO_SYSTEM_STORE } = StorageEnum
+// const { GO_SYSTEM_STORE } = StorageEnum
 const { PersonOutlineIcon, LockClosedOutlineIcon } = icon.ionicons5
 
 const formRef = ref()
@@ -147,7 +147,7 @@ const systemStore = useSystemStore()
 
 const t = window['$t']
 
-const formInline = reactive({
+const formInline: FormState = reactive({
   username: 'admin',
   password: 'admin',
 })
@@ -212,7 +212,7 @@ const handleSubmit = async (e: Event) => {
         const { tokenValue, tokenName } = res.data.token
         const { nickname, username, id, avatar } = res.data.userinfo
 
-        // 存储到 pinia 
+        // 存储到 pinia
         systemStore.setItem(SystemStoreEnum.USER_INFO, {
           [SystemStoreUserInfoEnum.USER_AVATAR]: avatar,
           [SystemStoreUserInfoEnum.USER_TOKEN]: tokenValue,
@@ -222,7 +222,7 @@ const handleSubmit = async (e: Event) => {
           [SystemStoreUserInfoEnum.NICK_NAME]: nickname,
           t
         })
-        
+
         window['$message'].success(t('login.login_success'))
         routerTurnByName(PageEnum.BASE_HOME_NAME, true)
       }
