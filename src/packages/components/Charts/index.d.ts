@@ -5,6 +5,7 @@ export enum ChatCategoryEnum {
   LINE = 'Lines',
   SCATTER = 'Scatters',
   MAP = 'Maps',
+  GAUGE = 'Gauges',
   MORE = 'Mores'
 }
 
@@ -14,5 +15,6 @@ export enum ChatCategoryEnumName {
   LINE = '折线图',
   SCATTER = '散点图',
   MAP = '地图',
+  GAUGE = '仪表盘',
   MORE = '更多'
 }
