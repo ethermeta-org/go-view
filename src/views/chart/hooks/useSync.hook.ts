@@ -14,7 +14,7 @@ import { ResultEnum } from '@/enums/httpEnum'
 import { saveProjectApi, fetchProjectApi, uploadFile, updateProjectApi } from '@/api/path'
 // 画布枚举
 import { SyncEnum } from '@/enums/editPageEnum'
-import { CreateComponentType, CreateComponentGroupType, ConfigType } from '@/packages/index.d'
+import { CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
 import { PublicGroupConfigClass } from '@/packages/public/publicConfig'
 import merge from 'lodash/merge'
 
@@ -85,7 +85,7 @@ export const useSync = () => {
       callBack?: (componentInstance: CreateComponentType) => void
     ) => {
       // 补充 class 上的方法
-      let newComponent: CreateComponentType = await createComponent(_componentInstance.chartConfig)
+      const newComponent: CreateComponentType = await createComponent(_componentInstance.chartConfig)
       if (callBack) {
         if (changeId) {
           callBack(componentMerge(newComponent, { ..._componentInstance, id: getUUID() }))
@@ -131,7 +131,7 @@ export const useSync = () => {
             // 分组插入到列表
             chartEditStore.addComponentList(groupClass, false, true)
           } else {
-            await  create(comItem as CreateComponentType)
+            await create(comItem as CreateComponentType)
           }
         }
       } else {
@@ -195,57 +195,61 @@ export const useSync = () => {
 
   // * 数据保存
   const dataSyncUpdate = throttle(async () => {
-    if(!fetchRouteParamsLocation()) return
+    try {
+      if(!fetchRouteParamsLocation()) return
 
-    if(!systemStore.getFetchInfo.OSSUrl) {
-      window['$message'].error('数据保存失败，请刷新页面重试！')
-      return
-    }
+      if(!systemStore.getFetchInfo.OSSUrl) {
+        window['$message'].error('数据保存失败，请刷新页面重试！')
+        return
+      }
 
-    let projectId = chartEditStore.getProjectInfo[ProjectInfoEnum.PROJECT_ID];
-    if(projectId === null || projectId === ''){
-      window['$message'].error('数据初未始化成功,请刷新页面！')
-      return
-    }
+      const projectId = chartEditStore.getProjectInfo[ProjectInfoEnum.PROJECT_ID];
+      if(projectId === null || projectId === ''){
+        window['$message'].error('数据初未始化成功,请刷新页面！')
+        return
+      }
 
-    chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.START)
+      chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.START)
 
-    // 获取缩略图片
-    const range = document.querySelector('.go-edit-range') as HTMLElement
-    // 生成图片
-    const canvasImage: HTMLCanvasElement = await html2canvas(range, {
-      backgroundColor: null,
-      allowTaint: true,
-      useCORS: true
-    })
-
-    // 上传预览图
-    let uploadParams = new FormData()
-    uploadParams.append('object', base64toFile(canvasImage.toDataURL(), `${fetchRouteParamsLocation()}_index_preview.png`))
-    const uploadRes = await uploadFile(systemStore.getFetchInfo.OSSUrl, uploadParams) as unknown as MyResponseType
-    // 保存预览图
-    if(uploadRes.code === ResultEnum.SUCCESS) {
-      await updateProjectApi({
-        id: fetchRouteParamsLocation(),
-        indexImage: uploadRes.data.objectContent.httpRequest.uri
+      // 获取缩略图片
+      const range = document.querySelector('.go-edit-range') as HTMLElement
+      // 生成图片
+      const canvasImage: HTMLCanvasElement = await html2canvas(range, {
+        backgroundColor: null,
+        allowTaint: true,
+        useCORS: true
       })
-    }
 
-    // 保存数据
-    let params = new FormData()
-    params.append('projectId', projectId)
-    params.append('content', JSON.stringify(chartEditStore.getStorageInfo || {}))
-    const res= await saveProjectApi(params) as unknown as MyResponseType
+      // 上传预览图
+      const uploadParams = new FormData()
+      uploadParams.append('object', base64toFile(canvasImage.toDataURL(), `${fetchRouteParamsLocation()}_index_preview.png`))
+      const uploadRes = await uploadFile(systemStore.getFetchInfo.OSSUrl, uploadParams) as unknown as MyResponseType
+      // 保存预览图
+      if(uploadRes.code === ResultEnum.SUCCESS) {
+        await updateProjectApi({
+          id: fetchRouteParamsLocation(),
+          indexImage: uploadRes.data.objectContent.httpRequest.uri
+        })
+      }
 
-    if (res.code === ResultEnum.SUCCESS) {
-      // 成功状态
-      setTimeout(() => {
-        chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.SUCCESS)
-      }, 1000)
-      return
+      // 保存数据
+      const params = new FormData()
+      params.append('projectId', projectId)
+      params.append('content', JSON.stringify(chartEditStore.getStorageInfo || {}))
+      const res = await saveProjectApi(params) as unknown as MyResponseType
+
+      if (res.code === ResultEnum.SUCCESS) {
+        // 成功状态
+        setTimeout(() => {
+          chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.SUCCESS)
+        }, 1000)
+        return
+      }
+      // 失败状态
+      chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
+    }catch (e) {
+      window['$message'].error(`保存数据失败：${e}`)
     }
-    // 失败状态
-    chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
   }, 3000)
 
   // * 定时处理
