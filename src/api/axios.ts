@@ -1,13 +1,12 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
-import {ResultEnum} from "@/enums/httpEnum"
-import {ErrorPageNameMap, PageEnum} from "@/enums/pageEnum"
+import {ResultEnum} from '@/enums/httpEnum'
+import {ErrorPageNameMap, PageEnum} from '@/enums/pageEnum'
 import {StorageEnum} from '@/enums/storageEnum'
 import {axiosPre} from '@/settings/httpSetting'
 import {SystemStoreEnum, SystemStoreUserInfoEnum} from '@/store/modules/systemStore/systemStore.d'
 import {getLocalStorage, redirectErrorPage, routerTurnByName} from '@/utils'
 import {fetchAllowList} from './axios.config'
 import includes from 'lodash/includes'
-import Cookies from 'js-cookie';
 
 const axiosInstance = axios.create({
     baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
@@ -62,7 +61,6 @@ axiosInstance.interceptors.response.use(
             redirectErrorPage(code)
             return Promise.resolve(res.data)
         }
-
         // 提示错误
         window['$message'].error(window['$t']((res.data as any).msg))
         return Promise.resolve(res.data)

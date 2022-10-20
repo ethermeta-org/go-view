@@ -1,6 +1,6 @@
 import { onUnmounted } from 'vue';
 import html2canvas from 'html2canvas'
-import { getUUID, httpErrorHandle, fetchRouteParamsLocation, base64toFile } from '@/utils'
+import { getUUID, httpErrorHandle, fetchRouteParamsLocation } from '@/utils'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { EditCanvasTypeEnum, ChartEditStoreEnum, ProjectInfoEnum, ChartEditStorage } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHistoryStore'
@@ -11,7 +11,7 @@ import throttle from 'lodash/throttle'
 // 接口状态
 import { ResultEnum } from '@/enums/httpEnum'
 // 接口
-import { saveProjectApi, fetchProjectApi, uploadFile, updateProjectApi } from '@/api/path'
+import { saveProjectApi, fetchProjectApi, updateProjectApi } from '@/api/path'
 // 画布枚举
 import { SyncEnum } from '@/enums/editPageEnum'
 import { CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
@@ -177,6 +177,7 @@ export const useSync = () => {
           updateStoreInfo(res.data)
           // 更新全局数据
           await updateComponent(JSON.parse(res.data.content))
+          chartEditStore.setProjectInfo(ProjectInfoEnum.PROJECT_ID, fetchRouteParamsLocation())
           return
         }else {
           chartEditStore.setProjectInfo(ProjectInfoEnum.PROJECT_ID, fetchRouteParamsLocation())
@@ -241,8 +242,10 @@ export const useSync = () => {
       params.append('projectId', projectId)
       params.append('content', JSON.stringify(chartEditStore.getStorageInfo || {}))
       const res = await saveProjectApi(params) as unknown as MyResponseType
-
-      if (res.code === ResultEnum.SUCCESS) {
+      if (res?.code=== ResultEnum.REQUEST_DATA_ERROR) { // 请求参数数据错误
+        throw (res.msg)
+      }
+      if (res?.code === ResultEnum.SUCCESS) {
         // 成功状态
         setTimeout(() => {
           chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.SUCCESS)
@@ -252,6 +255,7 @@ export const useSync = () => {
       // 失败状态
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
     }catch (e) {
+      console.log(e);
       window['$message'].error(`保存数据失败：${e}`);
     }
   }, 3000)
