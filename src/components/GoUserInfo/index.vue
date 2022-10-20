@@ -1,9 +1,9 @@
 <template>
   <n-dropdown
       trigger="hover"
-      @select="handleSelect"
       :show-arrow="true"
       :options="options"
+      @select="handleSelect"
   >
     <div class="user-info-box">
       <person-icon v-if="fallback"></person-icon>
@@ -21,7 +21,7 @@
   <!-- 系统设置 model -->
   <go-system-set v-model:modelShow="modelShow"></go-system-set>
   <!-- 关于软件 model -->
-  <go-system-info v-model:modelShow="modelShowInfo"></go-system-info>
+<!--  <go-system-info v-model:modelShow="modelShowInfo"></go-system-info>-->
 </template>
 
 <script lang="ts" setup>
@@ -30,8 +30,10 @@ import {NAvatar, NText} from 'naive-ui'
 import {getLocalStorage, logout, renderIcon, renderLang} from '@/utils'
 import Person from './person.png'
 
+import { GoSystemSet } from '@/components/GoSystemSet/index'
+
 import {icon} from '@/plugins'
-import {StorageEnum} from "@/enums/storageEnum";
+import {StorageEnum} from '@/enums/storageEnum';
 import {SystemStoreEnum, SystemStoreUserInfoEnum} from '@/store/modules/systemStore/systemStore.d'
 
 const {
@@ -89,11 +91,11 @@ const options = ref([
     key: 'sysSet',
     icon: renderIcon(SettingsSharpIcon)
   },
-  {
-    label: renderLang('global.contact'),
-    key: 'contact',
-    icon: renderIcon(ChatboxEllipsesIcon)
-  },
+  // {
+  //   label: renderLang('global.contact'),
+  //   key: 'contact',
+  //   icon: renderIcon(ChatboxEllipsesIcon)
+  // },
   {
     type: 'divider',
     key: 'd3'
