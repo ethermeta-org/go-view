@@ -12,7 +12,7 @@
           round
           object-fit="cover"
           size="medium"
-          :src="Person"
+          :src="avatar"
           @error="errorHandle"
       ></n-avatar>
     </div>
@@ -37,7 +37,6 @@ import {StorageEnum} from '@/enums/storageEnum';
 import {SystemStoreEnum, SystemStoreUserInfoEnum} from '@/store/modules/systemStore/systemStore.d'
 
 const {
-  ChatboxEllipsesIcon,
   PersonIcon,
   LogOutOutlineIcon,
   SettingsSharpIcon
@@ -53,7 +52,6 @@ const fallback = ref(false)
 const info = getLocalStorage(StorageEnum.GO_SYSTEM_STORE);
 const user_info = info[SystemStoreEnum.USER_INFO];
 const avatar = user_info[SystemStoreUserInfoEnum.USER_AVATAR] || Person;
-
 // 用户图标渲染
 const renderUserInfo = () => {
   return h(
