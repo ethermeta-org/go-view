@@ -176,10 +176,11 @@ export const useSync = () => {
         if (res.data) {
           updateStoreInfo(res.data)
           // 更新全局数据
-          await updateComponent(JSON.parse(res.data.content))
-          chartEditStore.setProjectInfo(ProjectInfoEnum.PROJECT_ID, fetchRouteParamsLocation())
-          return
+          if (res.data.content) {
+            await updateComponent(JSON.parse(res.data.content))
+          }
         }else {
+          window['$message'].error('数据初未始化成功,请刷新页面！')
           chartEditStore.setProjectInfo(ProjectInfoEnum.PROJECT_ID, fetchRouteParamsLocation())
         }
         setTimeout(() => {
@@ -190,7 +191,8 @@ export const useSync = () => {
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
     } catch (error) {
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
-      httpErrorHandle()
+      httpErrorHandle('数据获取');
+      console.log('数据获取:', error);
     }
   }
 
