@@ -221,16 +221,20 @@ export const useSync = () => {
       })
 
       // 上传预览图
-      const uploadParams = new FormData()
-      uploadParams.append('object', base64toFile(canvasImage.toDataURL(), `${fetchRouteParamsLocation()}_index_preview.png`))
-      const uploadRes = await uploadFile(systemStore.getFetchInfo.OSSUrl, uploadParams) as unknown as MyResponseType
+      // const uploadParams = new FormData()
+      // uploadParams.append('object', base64toFile(canvasImage.toDataURL(), `${fetchRouteParamsLocation()}_index_preview.png`))
+      // const uploadRes = await uploadFile('oss', uploadParams) as unknown as MyResponseType
       // 保存预览图
-      if(uploadRes.code === ResultEnum.SUCCESS) {
-        await updateProjectApi({
-          id: fetchRouteParamsLocation(),
-          indexImage: uploadRes.data.objectContent.httpRequest.uri
-        })
-      }
+      // if(uploadRes.code === ResultEnum.SUCCESS) {
+      //   await updateProjectApi({
+      //     id: fetchRouteParamsLocation(),
+      //     indexImage: uploadRes.data.objectContent.httpRequest.uri
+      //   })
+      // }
+      await updateProjectApi({
+        id: fetchRouteParamsLocation(),
+        indexImage: canvasImage.toDataURL()
+      })
 
       // 保存数据
       const params = new FormData()
@@ -248,7 +252,7 @@ export const useSync = () => {
       // 失败状态
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
     }catch (e) {
-      window['$message'].error(`保存数据失败：${e}`)
+      window['$message'].error(`保存数据失败：${e}`);
     }
   }, 3000)
 
