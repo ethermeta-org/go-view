@@ -11,7 +11,7 @@ export const useDataListInit = () => {
   const loading = ref(true)
 
   const paginat = reactive({
-    // 当前页数 
+    // 当前页数
     page: 1,
     // 每页值
     limit: 12,
@@ -47,7 +47,7 @@ export const useDataListInit = () => {
       }, 500)
       return
     }
-    httpErrorHandle()
+    httpErrorHandle('数据请求')
   }
 
   // 修改页数
@@ -78,7 +78,7 @@ export const useDataListInit = () => {
           fetchList()
           return
         }
-        httpErrorHandle()
+        httpErrorHandle('删除处理')
       }
     })
   }
@@ -103,7 +103,7 @@ export const useDataListInit = () => {
       window['$message'].success(window['$t']('global.r_publish_success'))
       return
     }
-    httpErrorHandle()
+    httpErrorHandle('发布处理')
   }
 
   // 立即请求

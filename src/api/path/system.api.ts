@@ -8,7 +8,7 @@ export const loginApi = async (data: object) => {
     const res = await http(RequestHttpEnum.POST)(`${ModuleTypeEnum.SYSTEM}/login`, data);
     return res;
   } catch(err) {
-    httpErrorHandle();
+    httpErrorHandle('loginApi');
   }
 }
 
@@ -18,7 +18,7 @@ export const logoutApi = async () => {
     const res = await http(RequestHttpEnum.GET)(`${ModuleTypeEnum.SYSTEM}/logout`);
     return res;
   } catch(err) {
-    httpErrorHandle();
+    httpErrorHandle('logoutApi');
   }
 }
 

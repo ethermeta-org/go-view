@@ -14,7 +14,7 @@ export const getSessionStorageInfo = async () => {
   const storageList: ChartEditStorageType[] = getSessionStorage(
     StorageEnum.GO_CHART_STORAGE_LIST
   )
-  
+
   // 是否本地预览
   if (!storageList || storageList.findIndex(e => e.id === id.toString()) === -1) {
     // 接口调用
@@ -27,7 +27,7 @@ export const getSessionStorageInfo = async () => {
       }
       return { ...JSON.parse(content), id }
     } else {
-      httpErrorHandle()
+      httpErrorHandle('获取存储数据的信息')
     }
   } else {
     // 本地读取

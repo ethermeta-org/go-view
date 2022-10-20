@@ -71,7 +71,7 @@ const handleBlur = async () => {
   if (res.code === ResultEnum.SUCCESS) {
     dataSyncUpdate()
   } else {
-    httpErrorHandle()
+    httpErrorHandle('handleBlur')
   }
 }
 </script>

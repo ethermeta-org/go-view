@@ -163,7 +163,7 @@ const sendHandle = async () => {
     }
     chartEditStore.setProjectInfo(ProjectInfoEnum.RELEASE, !release.value)
   } else {
-    httpErrorHandle()
+    httpErrorHandle('sendHandle')
   }
 }
 
