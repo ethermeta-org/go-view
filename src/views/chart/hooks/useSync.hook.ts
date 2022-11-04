@@ -4,7 +4,7 @@ import { getUUID, httpErrorHandle, fetchRouteParamsLocation } from '@/utils'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { EditCanvasTypeEnum, ChartEditStoreEnum, ProjectInfoEnum, ChartEditStorage } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHistoryStore'
-import { useSystemStore } from '@/store/modules/systemStore/systemStore'
+// import { useSystemStore } from '@/store/modules/systemStore/systemStore'
 import { fetchChartComponent, fetchConfigComponent, createComponent } from '@/packages/index'
 import { saveInterval } from '@/settings/designSetting'
 import throttle from 'lodash/throttle'
@@ -45,7 +45,6 @@ const componentMerge = (object: any, sources: any, notComponent = false) => {
 export const useSync = () => {
   const chartEditStore = useChartEditStore()
   const chartHistoryStore = useChartHistoryStore()
-  const systemStore = useSystemStore()
 
   /**
    * * 组件动态注册
@@ -201,16 +200,11 @@ export const useSync = () => {
     try {
       if(!fetchRouteParamsLocation()) return
 
-      if(!systemStore.getFetchInfo.OSSUrl) {
-        window['$message'].error('数据保存失败，请刷新页面重试！')
-        return
-      }
-
-      const projectId = chartEditStore.getProjectInfo[ProjectInfoEnum.PROJECT_ID];
-      if(projectId === null || projectId === ''){
-        window['$message'].error('数据初未始化成功,请刷新页面！')
-        return
-      }
+    const projectId = chartEditStore.getProjectInfo[ProjectInfoEnum.PROJECT_ID];
+    if(projectId === null || projectId === ''){
+      window['$message'].error('数据初未始化成功,请刷新页面！')
+      return
+    }
 
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.START)
 
