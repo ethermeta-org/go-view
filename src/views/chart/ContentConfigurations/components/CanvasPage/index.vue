@@ -280,7 +280,7 @@ const customRequest = (options: UploadCustomRequestOptions) => {
         `${fetchRouteParamsLocation()}_index_background.png`,
         { type: file.file.type }
       )
-      let uploadParams = new FormData()
+      const uploadParams = new FormData()
       uploadParams.append('object', newNameFile)
       const uploadRes = await uploadFile(uploadParams) as unknown as MyResponseType
 
