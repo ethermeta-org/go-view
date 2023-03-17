@@ -1,0 +1,14 @@
+version = 1
+
+test_patterns = ["**/test/**"]
+
+exclude_patterns = ["**.md"]
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  plugins = ["vue"]
+
+[[transformers]]
+name = "prettier"
