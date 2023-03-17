@@ -1,6 +1,7 @@
 import { echartOptionProfixHandle, PublicConfigClass } from '@/packages/public'
 import { PieCommonConfig } from './index'
 import { CreateComponentType } from '@/packages/index.d'
+import cloneDeep from 'lodash/cloneDeep'
 import dataJson from './data.json'
 
 export const includes = ['legend']
@@ -42,7 +43,9 @@ const option = {
       },
       label: {
         show: false,
-        position: 'center'
+        position: 'center',
+        formatter: '{b}',
+        fontSize:12
       },
       emphasis: {
         label: {
@@ -61,7 +64,7 @@ const option = {
 export default class Config extends PublicConfigClass implements CreateComponentType {
   public key: string = PieCommonConfig.key
 
-  public chartConfig = PieCommonConfig
+  public chartConfig = cloneDeep(PieCommonConfig)
 
   // 图表配置项
   public option = echartOptionProfixHandle(option, includes)

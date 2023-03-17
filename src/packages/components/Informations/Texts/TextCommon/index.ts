@@ -1,5 +1,4 @@
-import image from '@/assets/images/chart/informations/text_static.png'
-import { ConfigType, PackagesCategoryEnum } from '@/packages/index.d'
+import { ConfigType, PackagesCategoryEnum, ChartFrameEnum } from '@/packages/index.d'
 import { ChatCategoryEnum,ChatCategoryEnumName } from '../../index.d'
 
 export const TextCommonConfig: ConfigType = {
@@ -10,5 +9,6 @@ export const TextCommonConfig: ConfigType = {
   category: ChatCategoryEnum.TEXT,
   categoryName: ChatCategoryEnumName.TEXT,
   package: PackagesCategoryEnum.INFORMATIONS,
-  image
+  chartFrame: ChartFrameEnum.COMMON,
+  image: 'text_static.png'
 }

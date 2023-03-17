@@ -7,7 +7,11 @@
     @mouseleave="toolsMouseoutHandle"
   >
     <!-- PawIcon -->
-    <n-icon v-show="settingStore.getChartToolsStatus === ToolsStatusEnum.ASIDE && isMiniComputed " class="asideLogo" size="22">
+    <n-icon
+      v-show="settingStore.getChartToolsStatus === ToolsStatusEnum.ASIDE && isMiniComputed"
+      class="asideLogo"
+      size="22"
+    >
       <PawIcon></PawIcon>
     </n-icon>
 
@@ -58,17 +62,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, h } from 'vue'
+import { ref, computed } from 'vue'
 import { useSettingStore } from '@/store/modules/settingStore/settingStore'
 import { ToolsStatusEnum } from '@/store/modules/settingStore/settingStore.d'
+import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
+import { EditCanvasTypeEnum } from '@/store/modules/chartEditStore/chartEditStore.d'
+import {
+  fetchRouteParamsLocation,
+  fetchPathByName,
+  routerTurnByPath,
+  setSessionStorage,
+  getLocalStorage
+} from '@/utils'
+import { EditEnum } from '@/enums/pageEnum'
+import { StorageEnum } from '@/enums/storageEnum'
+import { useRoute } from 'vue-router'
 import { GoSystemSet } from '@/components/GoSystemSet/index'
 import { exportHandle } from './utils'
 import { useFile } from './hooks/useFile.hooks'
+import { useSyncUpdate } from './hooks/useSyncUpdate.hook'
 import { BtnListType, TypeEnum } from './index.d'
 import { icon } from '@/plugins'
 
-const { DownloadIcon, ShareIcon, PawIcon, SettingsSharpIcon } = icon.ionicons5
+const { DownloadIcon, ShareIcon, PawIcon, SettingsSharpIcon, CreateIcon } = icon.ionicons5
 const settingStore = useSettingStore()
+const chartEditStore = useChartEditStore()
+const routerParamsInfo = useRoute()
+// 初始化编辑 JSON 模块
+useSyncUpdate()
 
 // 鼠标悬停定时器
 let mouseTime: any = null
@@ -80,38 +101,16 @@ const isMini = ref<boolean>(true)
 const asideTootipDis = ref(true)
 // 文件上传
 const { importUploadFileListRef, importCustomRequest, importBeforeUpload } = useFile()
-// 配置列表
-const btnList: BtnListType[] = [
-  {
-    key: 'export',
-    type: TypeEnum.BUTTON,
-    name: '导出',
-    icon: ShareIcon,
-    handle: exportHandle
-  },
-  {
-    key: 'import',
-    type: TypeEnum.IMPORTUPLOAD,
-    name: '导入',
-    icon: DownloadIcon
-  },
-  {
-    key: 'setting',
-    type: TypeEnum.BUTTON,
-    name: '设置',
-    icon: SettingsSharpIcon,
-    handle: () => {
-      globalSettingModel.value = true
-    }
-  }
-]
 
 // 是否是侧边栏
 const isAside = computed(() => settingStore.getChartToolsStatus === ToolsStatusEnum.ASIDE)
+
 // 是否隐藏（悬浮展示）
 const isHide = computed(() => settingStore.getChartToolsStatusHide)
+
 // 是否展示最小化（与全局配置相关）
 const isMiniComputed = computed(() => isMini.value && isHide.value)
+
 // 页面渲染配置
 const btnListComputed = computed(() => {
   if (!isAside.value) return btnList
@@ -142,6 +141,73 @@ const toolsMouseoutHandle = () => {
     isMini.value = true
   }
 }
+
+// 编辑处理
+const editHandle = () => {
+  window['$message'].warning('请通过顶部【同步内容】按钮同步最新数据！')
+  chartEditStore.setEditCanvas(EditCanvasTypeEnum.IS_CODE_EDIT, true)
+  setTimeout(() => {
+    // 获取id路径
+    const path = fetchPathByName(EditEnum.CHART_EDIT_NAME, 'href')
+    if (!path) return
+    const id = fetchRouteParamsLocation()
+    updateToSession(id)
+    routerTurnByPath(path, [id], undefined, true)
+  }, 2000)
+}
+
+// 把内存中的数据同步到SessionStorage 便于传递给新窗口初始化数据
+const updateToSession = (id: string) => {
+  const storageInfo = chartEditStore.getStorageInfo
+  const sessionStorageInfo = getLocalStorage(StorageEnum.GO_CHART_STORAGE_LIST) || []
+
+  if (sessionStorageInfo?.length) {
+    const repeateIndex = sessionStorageInfo.findIndex((e: { id: string }) => e.id === id)
+    // 重复替换
+    if (repeateIndex !== -1) {
+      sessionStorageInfo.splice(repeateIndex, 1, { ...storageInfo, id })
+      setSessionStorage(StorageEnum.GO_CHART_STORAGE_LIST, sessionStorageInfo)
+    } else {
+      sessionStorageInfo.push({ ...storageInfo, id })
+      setSessionStorage(StorageEnum.GO_CHART_STORAGE_LIST, sessionStorageInfo)
+    }
+  } else {
+    setSessionStorage(StorageEnum.GO_CHART_STORAGE_LIST, [{ ...storageInfo, id }])
+  }
+}
+
+// 配置列表
+const btnList: BtnListType[] = [
+  {
+    key: 'import',
+    type: TypeEnum.IMPORTUPLOAD,
+    name: '导入',
+    icon: ShareIcon
+  },
+  {
+    key: 'export',
+    type: TypeEnum.BUTTON,
+    name: '导出',
+    icon: DownloadIcon,
+    handle: exportHandle
+  },
+  {
+    key: 'edit',
+    type: TypeEnum.BUTTON,
+    name: '编辑',
+    icon: CreateIcon,
+    handle: editHandle
+  },
+  {
+    key: 'setting',
+    type: TypeEnum.BUTTON,
+    name: '设置',
+    icon: SettingsSharpIcon,
+    handle: () => {
+      globalSettingModel.value = true
+    }
+  }
+]
 </script>
 
 <style lang="scss" scoped>
@@ -168,7 +234,7 @@ $asideBottom: 70px;
     flex-direction: column-reverse;
     height: auto;
     right: 20px;
-    padding: 20px 8px;
+    padding: 30px 8px;
     bottom: $asideBottom;
     overflow: hidden;
     transition: height ease 0.4s;

@@ -1,5 +1,4 @@
-import image from '@/assets/images/chart/decorates/countdown.png'
-import { ConfigType, PackagesCategoryEnum } from '@/packages/index.d'
+import { ConfigType, PackagesCategoryEnum, ChartFrameEnum } from '@/packages/index.d'
 import { ChatCategoryEnum, ChatCategoryEnumName } from '../../index.d'
 
 export const CountDownConfig: ConfigType = {
@@ -10,5 +9,6 @@ export const CountDownConfig: ConfigType = {
   category: ChatCategoryEnum.MORE,
   categoryName: ChatCategoryEnumName.MORE,
   package: PackagesCategoryEnum.DECORATES,
-  image
+  chartFrame: ChartFrameEnum.COMMON,
+  image: 'countdown.png'
 }

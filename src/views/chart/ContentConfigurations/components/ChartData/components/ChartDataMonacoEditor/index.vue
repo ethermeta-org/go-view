@@ -34,7 +34,7 @@
   </template>
 
   <!-- 弹窗 -->
-  <n-modal class="go-chart-data-monaco-editor" v-model:show="showModal" :mask-closable="false">
+  <n-modal class="go-chart-data-monaco-editor" v-model:show="showModal" :mask-closable="false" :closeOnEsc="false">
     <n-card :bordered="false" role="dialog" size="small" aria-modal="true" style="width: 1000px; height: 600px">
       <template #header>
         <n-space>
@@ -101,13 +101,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, toRefs, toRaw } from 'vue'
-import { MonacoEditor } from '@/components/Pages/MonacoEditor'
+import { ref, computed, watch, toRef, toRefs, toRaw, reactive } from 'vue'
 import { useTargetData } from '../../../hooks/useTargetData.hook'
-import { RequestHttpEnum, RequestDataTypeEnum, ResultEnum } from '@/enums/httpEnum'
+import { MonacoEditor } from '@/components/Pages/MonacoEditor'
 import { icon } from '@/plugins'
 import { goDialog, toString } from '@/utils'
-import { http, customizeHttp } from '@/api/http'
+import { customizeHttp } from '@/api/http'
 import cloneDeep from 'lodash/cloneDeep'
 
 const { DocumentTextIcon } = icon.ionicons5
@@ -128,13 +127,14 @@ const sourceData = ref<any>('')
 // 动态获取数据
 const fetchTargetData = async () => {
   try {
-    const res = await customizeHttp(toRaw(targetData.value.request), toRaw(chartEditStore.requestGlobalConfig))
+    const res = await customizeHttp(toRaw(targetData.value.request), toRaw(chartEditStore.getRequestGlobalConfig))
     if (res) {
       sourceData.value = res
       return
     }
-    window['$message'].warning('数据异常，请检查参数！')
+    window['$message'].warning('没有拿到返回值，请检查接口！')
   } catch (error) {
+    console.error(error);
     window['$message'].warning('数据异常，请检查参数！')
   }
 }
@@ -151,7 +151,7 @@ const filterRes = computed(() => {
   } catch (error) {
     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
     errorFlag.value = true
-    return '过滤函数错误'
+    return `过滤函数错误，日志：${error}`
   }
 })
 
@@ -188,7 +188,10 @@ const saveFilter = () => {
 watch(
   () => showModal.value,
   (newData: boolean) => {
-    if (newData) fetchTargetData()
+    if (newData) {
+      fetchTargetData()
+      filter.value = targetData.value.filter || `return data`
+    }
   }
 )
 </script>

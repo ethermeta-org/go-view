@@ -1,5 +1,4 @@
-import image from '@/assets/images/chart/decorates/border05.png'
-import { ConfigType, PackagesCategoryEnum } from '@/packages/index.d'
+import { ConfigType, PackagesCategoryEnum, ChartFrameEnum } from '@/packages/index.d'
 import { ChatCategoryEnum, ChatCategoryEnumName } from '../../index.d'
 
 export const Border05Config: ConfigType = {
@@ -10,5 +9,6 @@ export const Border05Config: ConfigType = {
   category: ChatCategoryEnum.BORDER,
   categoryName: ChatCategoryEnumName.BORDER,
   package: PackagesCategoryEnum.DECORATES,
-  image
+  chartFrame: ChartFrameEnum.STATIC,
+  image: 'border05.png'
 }

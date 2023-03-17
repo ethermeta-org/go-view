@@ -2,29 +2,84 @@ import { getUUID } from '@/utils'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { ChartEditStoreEnum, ChartEditStorage } from '@/store/modules/chartEditStore/chartEditStore.d'
 import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHistoryStore'
+import { useChartLayoutStore } from '@/store/modules/chartLayoutStore/chartLayoutStore'
+import { ChartLayoutStoreEnum } from '@/store/modules/chartLayoutStore/chartLayoutStore.d'
 import { fetchChartComponent, fetchConfigComponent, createComponent } from '@/packages/index'
-import { CreateComponentType, CreateComponentGroupType, ConfigType } from '@/packages/index.d'
+import { CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
+import { BaseEvent, EventLife } from '@/enums/eventEnum'
 import { PublicGroupConfigClass } from '@/packages/public/publicConfig'
 import merge from 'lodash/merge'
 
 /**
- * 合并处理
- * @param object 模板数据
+ * * 画布-版本升级对旧数据无法兼容的补丁
+ * @param object
+ */
+const canvasVersionUpdatePolyfill = (object: any) => {
+  return object
+}
+
+/**
+ * * 组件-版本升级对旧数据无法兼容的补丁
+ * @param newObject
+ * @param sources
+ */
+const componentVersionUpdatePolyfill = (newObject: any, sources: any) => {
+  try {
+    // 判断是否是组件
+    if (sources.id) {
+      // 处理事件补丁
+      const hasVnodeBeforeMount = 'vnodeBeforeMount' in sources.events
+      const hasVnodeMounted = 'vnodeMounted' in sources.events
+
+      if (hasVnodeBeforeMount) {
+        newObject.events.advancedEvents.vnodeBeforeMount = sources?.events.vnodeBeforeMount
+      }
+      if (hasVnodeMounted) {
+        newObject.events.advancedEvents.vnodeMounted = sources?.events.vnodeMounted
+      }
+      if (hasVnodeBeforeMount || hasVnodeMounted) {
+        sources.events = {
+          baseEvent: {
+            [BaseEvent.ON_CLICK]: undefined,
+            [BaseEvent.ON_DBL_CLICK]: undefined,
+            [BaseEvent.ON_MOUSE_ENTER]: undefined,
+            [BaseEvent.ON_MOUSE_LEAVE]: undefined
+          },
+          advancedEvents: {
+            [EventLife.VNODE_MOUNTED]: undefined,
+            [EventLife.VNODE_BEFORE_MOUNT]: undefined
+          },
+          interactEvents: []
+        }
+      }
+      return newObject
+    }
+  } catch (error) {
+    return newObject
+  }
+}
+
+/**
+ * * 合并处理
+ * @param newObject 新的模板数据
  * @param sources 新拿到的数据
  * @returns object
  */
-const componentMerge = (object: any, sources: any, notComponent = false) => {
+const componentMerge = (newObject: any, sources: any, notComponent = false) => {
+  // 处理组件补丁
+  componentVersionUpdatePolyfill(newObject, sources)
+
   // 非组件不处理
-  if (notComponent) return merge(object, sources)
-  // 组件排除 options
+  if (notComponent) return merge(newObject, sources)
+  // 组件排除 newObject
   const option = sources.option
-  if (!option) return merge(object, sources)
+  if (!option) return merge(newObject, sources)
 
   // 为 undefined 的 sources 来源对象属性将被跳过详见 https://www.lodashjs.com/docs/lodash.merge
   sources.option = undefined
   if (option) {
     return {
-      ...merge(object, sources),
+      ...merge(newObject, sources),
       option: option
     }
   }
@@ -34,7 +89,7 @@ const componentMerge = (object: any, sources: any, notComponent = false) => {
 export const useSync = () => {
   const chartEditStore = useChartEditStore()
   const chartHistoryStore = useChartHistoryStore()
-
+  const chartLayoutStore = useChartLayoutStore()
   /**
    * * 组件动态注册
    * @param projectData 项目数据
@@ -49,6 +104,9 @@ export const useSync = () => {
       chartHistoryStore.clearBackStack()
       chartHistoryStore.clearForwardStack()
     }
+    // 画布补丁处理
+    projectData.editCanvasConfig = canvasVersionUpdatePolyfill(projectData.editCanvasConfig)
+
     // 列表组件注册
     projectData.componentList.forEach(async (e: CreateComponentType | CreateComponentGroupType) => {
       const intComponent = (target: CreateComponentType) => {
@@ -97,7 +155,13 @@ export const useSync = () => {
     for (const key in projectData) {
       // 组件
       if (key === ChartEditStoreEnum.COMPONENT_LIST) {
+        let loadIndex = 0
+        const listLength = projectData[key].length;
         for (const comItem of projectData[key]) {
+          // 设置加载数量
+          let percentage = parseInt((parseFloat(`${++loadIndex / listLength}`) * 100).toString())
+          chartLayoutStore.setItemUnHandle(ChartLayoutStoreEnum.PERCENTAGE, percentage)
+          // 判断类型
           if (comItem.isGroup) {
             // 创建分组
             let groupClass = new PublicGroupConfigClass()
@@ -119,7 +183,7 @@ export const useSync = () => {
             // 分组插入到列表
             chartEditStore.addComponentList(groupClass, false, true)
           } else {
-            await  create(comItem as CreateComponentType)
+            await create(comItem as CreateComponentType)
           }
         }
       } else {
@@ -128,6 +192,9 @@ export const useSync = () => {
         componentMerge(chartEditStore[key], projectData[key], true)
       }
     }
+
+    // 清除数量
+    chartLayoutStore.setItemUnHandle(ChartLayoutStoreEnum.PERCENTAGE, 0)
   }
 
   return {

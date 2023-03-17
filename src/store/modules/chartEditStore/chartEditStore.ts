@@ -54,7 +54,9 @@ export const useChartEditStore = defineStore({
       // 拖拽中
       isDrag: false,
       // 框选中
-      isSelect: false
+      isSelect: false,
+      // 代码编辑中
+      isCodeEdit: false
     },
     // 右键菜单
     rightMenuShow: false,
@@ -75,6 +77,8 @@ export const useChartEditStore = defineStore({
     // -----------------------
     // 画布属性（需存储给后端）
     editCanvasConfig: {
+      // 项目名称
+      projectName: undefined,
       // 默认宽度
       width: 1920,
       // 默认高度
@@ -106,13 +110,16 @@ export const useChartEditStore = defineStore({
       selectColor: true,
       // chart 主题色
       chartThemeColor: defaultTheme || 'dark',
+      // 自定义颜色列表
+      chartCustomThemeColorInfo: undefined,
       // 全局配置
       chartThemeSetting: globalThemeJson,
-      // 预览方式
+      // 适配方式
       previewScaleType: previewScaleType
     },
     // 数据请求处理（需存储给后端）
     requestGlobalConfig: {
+      requestDataPond: [],
       requestOriginUrl: '',
       requestInterval: requestInterval,
       requestIntervalUnit: requestIntervalUnit,

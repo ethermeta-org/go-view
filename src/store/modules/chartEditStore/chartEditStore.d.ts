@@ -10,7 +10,7 @@ import {
   RequestParamsObjType
 } from '@/enums/httpEnum'
 import { PreviewScaleEnum } from '@/enums/styleEnum'
-import type { ChartColorsNameType, GlobalThemeJsonType } from '@/settings/chartThemes/index'
+import type { ChartColorsNameType, CustomColorsType, GlobalThemeJsonType } from '@/settings/chartThemes/index'
 
 // 编辑画布属性
 export enum EditCanvasTypeEnum {
@@ -22,7 +22,8 @@ export enum EditCanvasTypeEnum {
   LOCK_SCALE = 'lockScale',
   IS_CREATE = 'isCreate',
   IS_DRAG = 'isDrag',
-  IS_SELECT = 'isSelect'
+  IS_SELECT = 'isSelect',
+  IS_CODE_EDIT="isCodeEdit"
 }
 
 // 编辑区域
@@ -44,13 +45,17 @@ export type EditCanvasType = {
   [EditCanvasTypeEnum.IS_DRAG]: boolean
   // 框选中
   [EditCanvasTypeEnum.IS_SELECT]: boolean
+  // 代码编辑中
+  [EditCanvasTypeEnum.IS_CODE_EDIT]: boolean
 }
 
 // 滤镜/背景色/宽高主题等
 export enum EditCanvasConfigEnum {
+  PROJECT_NAME = 'projectName',
   WIDTH = 'width',
   HEIGHT = 'height',
   CHART_THEME_COLOR = 'chartThemeColor',
+  CHART_CUSTOM_THEME_COLOR_INFO = 'chartCustomThemeColorInfo',
   CHART_THEME_SETTING = 'chartThemeSetting',
   BACKGROUND = 'background',
   BACKGROUND_IMAGE = 'backgroundImage',
@@ -78,15 +83,20 @@ export interface EditCanvasConfigType {
   [FilterEnum.SKEW_X]: number
   [FilterEnum.SKEW_Y]: number
   [FilterEnum.BLEND_MODE]: string
+  // 大屏名称
+  [EditCanvasConfigEnum.PROJECT_NAME]?: string
   // 大屏宽度
   [EditCanvasConfigEnum.WIDTH]: number
   // 大屏高度
   [EditCanvasConfigEnum.HEIGHT]: number
   // 背景色
   [EditCanvasConfigEnum.BACKGROUND]?: string
+  // 背景图片
   [EditCanvasConfigEnum.BACKGROUND_IMAGE]?: string | null
   // 图表主题颜色
   [EditCanvasConfigEnum.CHART_THEME_COLOR]: ChartColorsNameType
+  // 自定义图表主题颜色
+  [EditCanvasConfigEnum.CHART_CUSTOM_THEME_COLOR_INFO]?: CustomColorsType[] 
   // 图表全局配置
   [EditCanvasConfigEnum.CHART_THEME_SETTING]: GlobalThemeJsonType
   // 图表主题颜色
@@ -150,16 +160,27 @@ type RequestPublicConfigType = {
   requestParams: RequestParams
 }
 
+// 数据池项类型
+export type RequestDataPondItemType = {
+  dataPondId: string,
+  dataPondName: string,
+  dataPondRequestConfig: RequestConfigType
+}
+
 // 全局的图表请求配置
 export interface RequestGlobalConfigType extends RequestPublicConfigType {
   // 组件定制轮询时间
   requestInterval: number
   // 请求源地址
   requestOriginUrl?: string
+  // 公共数据池
+  requestDataPond: RequestDataPondItemType[]
 }
 
 // 单个图表请求配置
 export interface RequestConfigType extends RequestPublicConfigType {
+  // 所选全局数据池的对应 id
+  requestDataPondId?: string
   // 组件定制轮询时间
   requestInterval?: number
   // 获取数据的方式

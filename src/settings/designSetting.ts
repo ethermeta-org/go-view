@@ -44,7 +44,7 @@ export const asideCollapsedWidth = 60
 export const maskClosable = false
 
 // 全局边框圆角
-export const borderRadius = '6px'
+export const borderRadius = '4px'
 
 // 轮播间隔
 export const carouselInterval = 4000
@@ -54,6 +54,9 @@ export const backgroundImageSize = 5
 
 // 预览展示方式
 export const previewScaleType = PreviewScaleEnum.FIT
+
+// 编辑工作台同步到 JSON 的轮询间隔（5S）
+export const editToJsonInterval = 5000
 
 // 数据请求间隔
 export const requestInterval = 30

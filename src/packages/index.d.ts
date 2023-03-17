@@ -1,3 +1,4 @@
+import { BaseEvent, EventLife, InteractEvents, InteractEventOn, InteractActionsType } from '@/enums/eventEnum'
 import type { GlobalThemeJsonType } from '@/settings/chartThemes/index'
 import type { RequestConfigType } from '@/store/modules/chartEditStore/chartEditStore.d'
 
@@ -22,7 +23,7 @@ export type ConfigType = {
   categoryName: string
   package: string
   chartFrame?: ChartFrameEnum
-  image: string | (() => Promise<typeof import('*.png')>)
+  image: string
 }
 
 // 数据请求
@@ -113,8 +114,26 @@ export interface PublicConfigType {
     // 动画
     animations: string[]
   }
+  preview?: {
+    // 预览超出隐藏
+    overFlowHidden?: boolean
+  }
   filter?: string
   status: StatusType
+  interactActions?: InteractActionsType[],
+  events: {
+    baseEvent: {
+      [K in BaseEvent]?: string
+    }
+    advancedEvents: {
+      [K in EventLife]?: string
+    }
+    interactEvents: {
+      [InteractEvents.INTERACT_ON]: InteractEventOn | undefined
+      [InteractEvents.INTERACT_COMPONENT_ID]: string | undefined
+      [InteractEvents.INTERACT_FN]: { [name: string]: string }
+    }[]
+  }
 }
 
 export interface CreateComponentType extends PublicConfigType, requestConfig {
