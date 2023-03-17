@@ -1,13 +1,13 @@
 <template>
   <v-chart
-      ref="vChartRef"
-      :theme="themeColor"
-      :option="option"
-      :manual-update="isPreview()"
-      :update-options="{
+    ref="vChartRef"
+    :theme="themeColor"
+    :option="option"
+    :manual-update="isPreview()"
+    :update-options="{
       replaceMerge: replaceMergeArr
     }"
-      autoresize
+    autoresize
   >
   </v-chart>
 </template>
@@ -51,28 +51,28 @@ const option = computed(() => {
 
 // dataset 无法变更条数的补丁
 watch(
-    () => props.chartConfig.option.dataset,
-    (newData: { dimensions: any }, oldData) => {
-      try {
-        if (!isObject(newData) || !('dimensions' in newData)) return
-        if (Array.isArray(newData?.dimensions)) {
-          const seriesArr = []
-          for (let i = 0; i < newData.dimensions.length - 1; i++) {
-            seriesArr.push(seriesItem)
-          }
-          replaceMergeArr.value = ['series']
-          props.chartConfig.option.series = seriesArr
-          nextTick(() => {
-            replaceMergeArr.value = []
-          })
+  () => props.chartConfig.option.dataset,
+  (newData: { dimensions: any }, oldData) => {
+    try {
+      if (!isObject(newData) || !('dimensions' in newData)) return
+      if (Array.isArray(newData?.dimensions)) {
+        const seriesArr = []
+        for (let i = 0; i < newData.dimensions.length - 1; i++) {
+          seriesArr.push(seriesItem)
         }
-      } catch (error) {
-        console.log(error)
+        replaceMergeArr.value = ['series']
+        props.chartConfig.option.series = seriesArr
+        nextTick(() => {
+          replaceMergeArr.value = []
+        })
       }
-    },
-    {
-      deep: false
+    } catch (error) {
+      console.log(error)
     }
+  },
+  {
+    deep: false
+  }
 )
 
 const { vChartRef } = useChartDataFetch(props.chartConfig, useChartEditStore)

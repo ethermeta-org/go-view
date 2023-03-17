@@ -138,7 +138,7 @@ import { loadAsyncComponent, fetchRouteParamsLocation } from '@/utils'
 import { PreviewScaleEnum } from '@/enums/styleEnum'
 import { ResultEnum } from '@/enums/httpEnum'
 import { icon } from '@/plugins'
-import { uploadFile} from '@/api/path'
+import { uploadFile } from '@/api/path'
 
 const { ColorPaletteIcon } = icon.ionicons5
 const { ScaleIcon, FitToScreenIcon, FitToHeightIcon, FitToWidthIcon } = icon.carbon
@@ -275,24 +275,19 @@ const customRequest = (options: UploadCustomRequestOptions) => {
   nextTick(async () => {
     if (file.file) {
       // 修改名称
-      const newNameFile = new File(
-        [file.file],
-        `${fetchRouteParamsLocation()}_index_background.png`,
-        { type: file.file.type }
-      )
+      const newNameFile = new File([file.file], `${fetchRouteParamsLocation()}_index_background.png`, {
+        type: file.file.type
+      })
       const uploadParams = new FormData()
       uploadParams.append('object', newNameFile)
-      const uploadRes = await uploadFile(uploadParams) as unknown as MyResponseType
+      const uploadRes = (await uploadFile(uploadParams)) as unknown as MyResponseType
 
-      if(uploadRes.code === ResultEnum.SUCCESS) {
+      if (uploadRes.code === ResultEnum.SUCCESS) {
         chartEditStore.setEditCanvasConfig(
           EditCanvasConfigEnum.BACKGROUND_IMAGE,
           `${systemStore.getFetchInfo.OSSUrl}${uploadRes.data.fileName}?time=${new Date().getTime()}`
         )
-        chartEditStore.setEditCanvasConfig(
-          EditCanvasConfigEnum.SELECT_COLOR,
-          false
-        )
+        chartEditStore.setEditCanvasConfig(EditCanvasConfigEnum.SELECT_COLOR, false)
         return
       }
       window['$message'].error('添加图片失败，请稍后重试！')
@@ -354,8 +349,8 @@ $uploadHeight: 193px;
     padding-right: 2.25em;
   }
   .select-preview-icon {
-    padding-right: .68em;
-    padding-left: .68em;
+    padding-right: 0.68em;
+    padding-left: 0.68em;
   }
   .tabs-box {
     margin-top: 20px;

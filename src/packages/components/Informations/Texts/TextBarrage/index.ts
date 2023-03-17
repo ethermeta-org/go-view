@@ -1,6 +1,6 @@
 import image from '@/assets/images/chart/informations/text_barrage.png'
 import { ConfigType, PackagesCategoryEnum } from '@/packages/index.d'
-import { ChatCategoryEnum,ChatCategoryEnumName } from '../../index.d'
+import { ChatCategoryEnum, ChatCategoryEnumName } from '../../index.d'
 
 export const TextBarrageConfig: ConfigType = {
   key: 'TextBarrage',

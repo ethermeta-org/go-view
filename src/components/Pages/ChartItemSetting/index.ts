@@ -17,4 +17,14 @@ import SizeSetting from './SizeSetting.vue'
 // 样式
 import StylesSetting from './StylesSetting.vue'
 
-export { CollapseItem, SettingItemBox, SettingItem, GlobalSetting, GlobalSettingPosition, NameSetting, PositionSetting, SizeSetting, StylesSetting }
+export {
+  CollapseItem,
+  SettingItemBox,
+  SettingItem,
+  GlobalSetting,
+  GlobalSettingPosition,
+  NameSetting,
+  PositionSetting,
+  SizeSetting,
+  StylesSetting
+}

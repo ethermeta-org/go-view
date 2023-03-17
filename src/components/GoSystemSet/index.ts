@@ -1,3 +1,3 @@
-import GoSystemSet from './index.vue';
+import GoSystemSet from './index.vue'
 
-export { GoSystemSet };
+export { GoSystemSet }

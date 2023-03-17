@@ -15,5 +15,5 @@ export const systemSetting = {
   // 图表工具栏状态（侧边工具状态）
   [SettingStoreEnums.CHART_TOOLS_STATUS]: ToolsStatusEnum.ASIDE,
   // 图表工具栏状态隐藏（刚开始不隐藏）
-  [SettingStoreEnums.CHART_TOOLS_STATUS_HIDE]: false,
+  [SettingStoreEnums.CHART_TOOLS_STATUS_HIDE]: false
 }

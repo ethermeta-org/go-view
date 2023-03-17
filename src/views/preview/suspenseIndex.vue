@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="`go-preview ${localStorageInfo.editCanvasConfig.previewScaleType}`"
-  >
+  <div :class="`go-preview ${localStorageInfo.editCanvasConfig.previewScaleType}`">
     <template v-if="showEntity">
       <!-- 实体区域 -->
       <div ref="entityRef" class="go-preview-entity">
@@ -10,9 +8,7 @@
           <!-- 展示层 -->
           <div :style="previewRefStyle" v-if="show">
             <!-- 渲染层 -->
-            <preview-render-list
-              :localStorageInfo="localStorageInfo"
-            ></preview-render-list>
+            <preview-render-list :localStorageInfo="localStorageInfo"></preview-render-list>
           </div>
         </div>
       </div>
@@ -23,9 +19,7 @@
         <!-- 展示层 -->
         <div :style="previewRefStyle" v-if="show">
           <!-- 渲染层 -->
-          <preview-render-list
-            :localStorageInfo="localStorageInfo"
-          ></preview-render-list>
+          <preview-render-list :localStorageInfo="localStorageInfo"></preview-render-list>
         </div>
       </div>
     </template>
@@ -44,24 +38,22 @@ import { PreviewScaleEnum } from '@/enums/styleEnum'
 import { useComInstall } from './hooks/useComInstall.hook'
 import type { ChartEditStorageType } from './index.d'
 
-const localStorageInfo = await getSessionStorageInfo() as ChartEditStorageType
+const localStorageInfo = (await getSessionStorageInfo()) as ChartEditStorageType
 
-if(localStorageInfo.isRelease === false) {
+if (localStorageInfo.isRelease === false) {
   routerTurnByName(PageEnum.REDIRECT_UN_PUBLISH_NAME, true, false)
 }
 
 const previewRefStyle = computed(() => {
   return {
     ...getEditCanvasConfigStyle(localStorageInfo.editCanvasConfig),
-    ...getFilterStyle(localStorageInfo.editCanvasConfig.filterShow ? localStorageInfo.editCanvasConfig : undefined),
+    ...getFilterStyle(localStorageInfo.editCanvasConfig.filterShow ? localStorageInfo.editCanvasConfig : undefined)
   }
 })
 
 const showEntity = computed(() => {
   const type = localStorageInfo.editCanvasConfig.previewScaleType
-  return (
-    type === PreviewScaleEnum.SCROLL_Y || type === PreviewScaleEnum.SCROLL_X
-  )
+  return type === PreviewScaleEnum.SCROLL_Y || type === PreviewScaleEnum.SCROLL_X
 })
 
 useStore(localStorageInfo)

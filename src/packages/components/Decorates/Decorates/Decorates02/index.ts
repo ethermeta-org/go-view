@@ -1,6 +1,6 @@
 import image from '@/assets/images/chart/decorates/decorates02.png'
 import { ConfigType, PackagesCategoryEnum } from '@/packages/index.d'
-import { ChatCategoryEnum,ChatCategoryEnumName } from '../../index.d'
+import { ChatCategoryEnum, ChatCategoryEnumName } from '../../index.d'
 
 export const Decorates02Config: ConfigType = {
   key: 'Decorates02',

@@ -15,7 +15,7 @@ export const option = {
   prefixText: '￥',
   prefixColor: '#4a9ef8',
   suffixText: '元',
-  suffixColor: '#4a9ef8',
+  suffixColor: '#4a9ef8'
 }
 
 export default class Config extends PublicConfigClass implements CreateComponentType {

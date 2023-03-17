@@ -3,20 +3,10 @@
     <svg :width="w" :height="h">
       <defs>
         <filter :id="filterId" height="150%" width="150%" x="-25%" y="-25%">
-          <feMorphology
-            operator="dilate"
-            radius="2"
-            in="SourceAlpha"
-            result="thicken"
-          />
+          <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="thicken" />
           <feGaussianBlur in="thicken" stdDeviation="3" result="blurred" />
           <feFlood :flood-color="colors[1]" result="glowColor" />
-          <feComposite
-            in="glowColor"
-            in2="blurred"
-            operator="in"
-            result="softGlowColored"
-          />
+          <feComposite in="glowColor" in2="blurred" operator="in" result="softGlowColored" />
           <feMerge>
             <feMergeNode in="softGlowColored" />
             <feMergeNode in="SourceGraphic" />
@@ -91,13 +81,7 @@
           ${(w - borderTitleWidth) / 2 - 25}, 46 ${(w - borderTitleWidth) / 2 - 4}, 46
         `"
       >
-        <animate
-          attributeName="opacity"
-          values="1;0.7;1"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="opacity" values="1;0.7;1" dur="2s" begin="0s" repeatCount="indefinite" />
       </polygon>
 
       <polygon
@@ -109,13 +93,7 @@
           ${(w - borderTitleWidth) / 2 - 55}, 46 ${(w - borderTitleWidth) / 2 - 34}, 46
         `"
       >
-        <animate
-          attributeName="opacity"
-          values="0.7;0.4;0.7"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="opacity" values="0.7;0.4;0.7" dur="2s" begin="0s" repeatCount="indefinite" />
       </polygon>
 
       <polygon
@@ -127,13 +105,7 @@
           ${(w - borderTitleWidth) / 2 - 85}, 46 ${(w - borderTitleWidth) / 2 - 64}, 46
         `"
       >
-        <animate
-          attributeName="opacity"
-          values="0.5;0.2;0.5"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" begin="0s" repeatCount="indefinite" />
       </polygon>
 
       <polygon
@@ -145,13 +117,7 @@
           ${(w + borderTitleWidth) / 2 + 3}, 46 ${(w + borderTitleWidth) / 2 + 24}, 46
         `"
       >
-        <animate
-          attributeName="opacity"
-          values="1;0.7;1"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="opacity" values="1;0.7;1" dur="2s" begin="0s" repeatCount="indefinite" />
       </polygon>
 
       <polygon
@@ -163,13 +129,7 @@
           ${(w + borderTitleWidth) / 2 + 33}, 46 ${(w + borderTitleWidth) / 2 + 54}, 46
         `"
       >
-        <animate
-          attributeName="opacity"
-          values="0.7;0.4;0.7"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="opacity" values="0.7;0.4;0.7" dur="2s" begin="0s" repeatCount="indefinite" />
       </polygon>
 
       <polygon
@@ -181,13 +141,7 @@
           ${(w + borderTitleWidth) / 2 + 63}, 46 ${(w + borderTitleWidth) / 2 + 84}, 46
         `"
       >
-        <animate
-          attributeName="opacity"
-          values="0.5;0.2;0.5"
-          dur="2s"
-          begin="0s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" begin="0s" repeatCount="indefinite" />
       </polygon>
 
       <text
@@ -236,15 +190,8 @@ const props = defineProps({
 
 const filterId = `border-box-04-filterId-${getUUID()}`
 const { w, h } = toRefs(props.chartConfig.attr)
-const {
-  colors,
-  borderTitle,
-  borderTitleColor,
-  borderTitleSize,
-  borderTitleHeight,
-  borderTitleWidth,
-  backgroundColor
-} = toRefs(props.chartConfig.option)
+const { colors, borderTitle, borderTitleColor, borderTitleSize, borderTitleHeight, borderTitleWidth, backgroundColor } =
+  toRefs(props.chartConfig.option)
 </script>
 
 <style lang="scss" scoped>

@@ -35,7 +35,7 @@
       <!-- 保存 -->
       <n-tooltip placement="bottom" trigger="hover">
         <template #trigger>
-          <div class="save-btn" >
+          <div class="save-btn">
             <n-button size="small" type="primary" ghost @click="dataSyncUpdate()">
               <template #icon>
                 <n-icon>
@@ -99,9 +99,9 @@ const btnList = reactive<ItemType<ChartLayoutStoreEnum>[]>([
   }
 ])
 
-const isBackStack = computed(()=> chartHistoryStore.getBackStack.length> 1)
+const isBackStack = computed(() => chartHistoryStore.getBackStack.length > 1)
 
-const isForwardStack = computed(()=> chartHistoryStore.getForwardStack.length> 0)
+const isForwardStack = computed(() => chartHistoryStore.getForwardStack.length > 0)
 
 const historyList = reactive<ItemType<HistoryStackEnum>[]>([
   {
@@ -118,7 +118,6 @@ const historyList = reactive<ItemType<HistoryStackEnum>[]>([
     icon: renderIcon(ArrowForwardIcon)
   }
 ])
-
 
 // store 描述的是展示的值，所以和 ContentConfigurations 的 collapsed 是相反的
 const styleHandle = (item: ItemType<ChartLayoutStoreEnum>) => {
@@ -138,10 +137,10 @@ const clickHistoryHandle = (item: ItemType<HistoryStackEnum>) => {
   switch (item.key) {
     case HistoryStackEnum.BACK_STACK:
       chartEditStore.setBack()
-      break;
+      break
     case HistoryStackEnum.FORWARD_STACK:
       chartEditStore.setForward()
-      break;
+      break
   }
 }
 
@@ -160,5 +159,5 @@ const goHomeHandle = () => {
 <style lang="scss" scoped>
 .header-left-btn {
   margin-left: -37px;
- }
+}
 </style>

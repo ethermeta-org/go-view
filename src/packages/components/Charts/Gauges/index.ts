@@ -1,3 +1,3 @@
-import { GaugeCommonConfig } from './GaugeCommon/index';
+import { GaugeCommonConfig } from './GaugeCommon/index'
 
 export default [GaugeCommonConfig]

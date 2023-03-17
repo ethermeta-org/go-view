@@ -1,5 +1,5 @@
 <template>
-  <div class="go-reload"></div>  
+  <div class="go-reload"></div>
 </template>
 
 <script lang="ts" setup>
@@ -15,6 +15,6 @@ onMounted(() => {
 @include go('reload') {
   height: 100vh;
   width: 100vw;
-  @include fetch-bg-color('background-color')
+  @include fetch-bg-color('background-color');
 }
 </style>

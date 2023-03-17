@@ -6,9 +6,7 @@ import { setLocalStorage, getLocalStorage } from '@/utils'
 import { StorageEnum } from '@/enums/storageEnum'
 const { GO_SETTING_STORE } = StorageEnum
 
-const storageSetting: SettingStoreType = getLocalStorage(
-  GO_SETTING_STORE
-)
+const storageSetting: SettingStoreType = getLocalStorage(GO_SETTING_STORE)
 
 // 全局设置
 export const useSettingStore = defineStore({
@@ -38,13 +36,10 @@ export const useSettingStore = defineStore({
     },
     getChartToolsStatusHide(): boolean {
       return this.chartToolsStatusHide
-    },
+    }
   },
   actions: {
-    setItem<T extends keyof SettingStoreType, K extends SettingStoreType[T]>(
-      key: T,
-      value: K
-    ): void {
+    setItem<T extends keyof SettingStoreType, K extends SettingStoreType[T]>(key: T, value: K): void {
       this.$patch(state => {
         state[key] = value
       })

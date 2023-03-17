@@ -484,9 +484,9 @@ export default class earth {
           mesh.userData['size'] * mesh.userData['scale']
         )
         if (mesh.userData['scale'] <= 1.5) {
-          (mesh.material as Material).opacity = (mesh.userData['scale'] - 1) * 2 //2等于1/(1.5-1.0)，保证透明度在0~1之间变化
+          ;(mesh.material as Material).opacity = (mesh.userData['scale'] - 1) * 2 //2等于1/(1.5-1.0)，保证透明度在0~1之间变化
         } else if (mesh.userData['scale'] > 1.5 && mesh.userData['scale'] <= 2) {
-          (mesh.material as Material).opacity = 1 - (mesh.userData['scale'] - 1.5) * 2 //2等于1/(2.0-1.5) mesh缩放2倍对应0 缩放1.5被对应1
+          ;(mesh.material as Material).opacity = 1 - (mesh.userData['scale'] - 1.5) * 2 //2等于1/(2.0-1.5) mesh缩放2倍对应0 缩放1.5被对应1
         } else {
           mesh.userData['scale'] = 1
         }

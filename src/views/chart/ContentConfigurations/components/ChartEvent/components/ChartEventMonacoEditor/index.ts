@@ -1,3 +1,3 @@
-import  ChartEventMonacoEditor from './index.vue'
+import ChartEventMonacoEditor from './index.vue'
 
 export { ChartEventMonacoEditor }
