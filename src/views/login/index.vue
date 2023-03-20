@@ -25,16 +25,16 @@
     <div class="go-login">
       <div class="go-login-carousel">
         <n-carousel
-          autoplay
-          dot-type="line"
-          :interval="Number(carouselInterval)"
+            autoplay
+            dot-type="line"
+            :interval="Number(carouselInterval)"
         >
           <img
-            v-for="(item, i) in carouselImgList"
-            :key="i"
-            class="go-login-carousel-img"
-            :src="getImageUrl(item, 'login')"
-            alt="image"
+              v-for="(item, i) in carouselImgList"
+              :key="i"
+              class="go-login-carousel-img"
+              :src="getImageUrl(item, 'login')"
+              alt="image"
           />
         </n-carousel>
       </div>
@@ -44,22 +44,22 @@
             <n-card class="login-account-card" :title="$t('login.desc')">
               <div class="login-account-top">
                 <img
-                  class="login-account-top-logo"
-                  src="~@/assets/images/login/input.png"
-                  alt="展示图片"
+                    class="login-account-top-logo"
+                    src="~@/assets/images/login/input.png"
+                    alt="展示图片"
                 />
               </div>
               <n-form
-                ref="formRef"
-                label-placement="left"
-                size="large"
-                :model="formInline"
-                :rules="rules"
+                  ref="formRef"
+                  label-placement="left"
+                  size="large"
+                  :model="formInline"
+                  :rules="rules"
               >
                 <n-form-item path="username">
                   <n-input
-                    v-model:value="formInline.username"
-                    :placeholder="$t('global.form_account')"
+                      v-model:value="formInline.username"
+                      :placeholder="$t('global.form_account')"
                   >
                     <template #prefix>
                       <n-icon size="18">
@@ -70,10 +70,10 @@
                 </n-form-item>
                 <n-form-item path="password">
                   <n-input
-                    v-model:value="formInline.password"
-                    type="password"
-                    show-password-on="click"
-                    :placeholder="$t('global.form_password')"
+                      v-model:value="formInline.password"
+                      type="password"
+                      show-password-on="click"
+                      :placeholder="$t('global.form_password')"
                   >
                     <template #prefix>
                       <n-icon size="18">
@@ -86,19 +86,19 @@
                   <div class="flex justify-between">
                     <div class="flex-initial">
                       <n-checkbox v-model:checked="autoLogin">{{
-                        $t('login.form_auto')
-                      }}</n-checkbox>
+                          $t('login.form_auto')
+                        }}</n-checkbox>
                     </div>
                   </div>
                 </n-form-item>
                 <n-form-item>
                   <n-button
-                    type="primary"
-                    @click="handleSubmit"
-                    size="large"
-                    :loading="loading"
-                    block
-                    >{{ $t('login.form_button') }}</n-button
+                      type="primary"
+                      @click="handleSubmit"
+                      size="large"
+                      :loading="loading"
+                      block
+                  >{{ $t('login.form_button') }}</n-button
                   >
                 </n-form-item>
               </n-form>
@@ -125,33 +125,27 @@ import { GoLangSelect } from '@/components/GoLangSelect'
 import { LayoutHeader } from '@/layout/components/LayoutHeader'
 import { LayoutFooter } from '@/layout/components/LayoutFooter'
 import { PageEnum } from '@/enums/pageEnum'
-import { StorageEnum } from '@/enums/storageEnum'
+// import { StorageEnum } from '@/enums/storageEnum'
 import { icon } from '@/plugins'
 import { routerTurnByName } from '@/utils'
 import { loginApi } from '@/api/path'
-
 interface FormState {
   username: string
   password: string
 }
-
-const { GO_SYSTEM_STORE } = StorageEnum
+// const { GO_SYSTEM_STORE } = StorageEnum
 const { PersonOutlineIcon, LockClosedOutlineIcon } = icon.ionicons5
-
 const formRef = ref()
 const loading = ref(false)
 const autoLogin = ref(true)
 const show = ref(false)
 const showBg = ref(false)
 const systemStore = useSystemStore()
-
 const t = window['$t']
-
-const formInline = reactive({
+const formInline: FormState = reactive({
   username: 'admin',
   password: 'admin',
 })
-
 const rules = {
   username: {
     required: true,
@@ -164,13 +158,10 @@ const rules = {
     trigger: 'blur',
   },
 }
-
 // 定时器
 const shuffleTimiing = ref()
-
 // 轮播图
 const carouselImgList = ['one', 'two', 'three']
-
 // 背景图
 const bgList = ref([
   'bar_y',
@@ -183,19 +174,16 @@ const bgList = ref([
   'pie',
   'radar',
 ])
-
 // 处理url获取
 const getImageUrl = (name: string, folder: string) => {
   return new URL(`../../assets/images/${folder}/${name}.png`, import.meta.url).href
 }
-
 // 打乱图片顺序
 const shuffleHandle = () => {
   shuffleTimiing.value = setInterval(() => {
     bgList.value = shuffle(bgList.value)
   }, carouselInterval)
 }
-
 // 登录
 const handleSubmit = async (e: Event) => {
   e.preventDefault()
@@ -207,13 +195,13 @@ const handleSubmit = async (e: Event) => {
       const res = await loginApi({
         username,
         password
-      })
-      if(res && res.data) {
+      }) as unknown as MyResponseType
+      if(res.data) {
         const { tokenValue, tokenName } = res.data.token
-        const { nickname, username, id } = res.data.userinfo
-
-        // 存储到 pinia 
+        const { nickname, username, id, avatar } = res.data.userinfo
+        // 存储到 pinia
         systemStore.setItem(SystemStoreEnum.USER_INFO, {
+          [SystemStoreUserInfoEnum.USER_AVATAR]: avatar,
           [SystemStoreUserInfoEnum.USER_TOKEN]: tokenValue,
           [SystemStoreUserInfoEnum.TOKEN_NAME]: tokenName,
           [SystemStoreUserInfoEnum.USER_ID]: id,
@@ -221,26 +209,21 @@ const handleSubmit = async (e: Event) => {
           [SystemStoreUserInfoEnum.NICK_NAME]: nickname,
           t
         })
-        
         window['$message'].success(t('login.login_success'))
         routerTurnByName(PageEnum.BASE_HOME_NAME, true)
       }
-      loading.value = false
     } else {
       window['$message'].error(t('login.login_message'))
     }
   })
 }
-
 onMounted(() => {
   setTimeout(() => {
     show.value = true
   }, 300)
-
   setTimeout(() => {
     showBg.value = true
   }, 100)
-
   shuffleHandle()
 })
 </script>
@@ -252,7 +235,6 @@ $account-img-height: 210px;
 $footer-height: 50px;
 $carousel-width: 30%;
 $carousel-image-height: 60vh;
-
 * {
   box-sizing: border-box;
 }
@@ -271,7 +253,6 @@ $carousel-image-height: 60vh;
     margin: 0;
     padding-top: 0;
   }
-
   @include go(login) {
     z-index: 2;
     display: flex;
@@ -297,13 +278,11 @@ $carousel-image-height: 60vh;
       &-container {
         width: $width;
       }
-
       &-card {
         @extend .go-background-filter;
         @include fetch-bg-color('filter-color');
         box-shadow: 0 0 20px 5px rgba(40, 40, 40, 0.3);
       }
-
       &-top {
         padding-top: 10px;
         text-align: center;
@@ -312,14 +291,12 @@ $carousel-image-height: 60vh;
       }
     }
   }
-
   &-footer {
     z-index: 2;
     position: fixed;
     width: 100%;
     bottom: 0;
   }
-
   &-bg {
     z-index: 0;
     position: fixed;

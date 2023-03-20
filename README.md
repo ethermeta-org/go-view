@@ -1,8 +1,10 @@
 ## 分支说明
-当前分支`main`, 由`master-fetch`分支签出,如果后续需要合并原仓库代码,需要从`master-fetch`合并到`main`分支
+当前分支`main` 带后端接口的`dev`分支, 如果后续需要合并原仓库代码,需要从`master-fetch-dev`合并到`main`分支
 
-1. 纯前端分支: master
-2. 带有后端请求分支: master-fetch
+1. 原仓库纯前端dev分支: dev
+2. 带有后端请求dev分支: master-fetch
+3. 原仓库纯前端release分支: master
+4. 带有后端请求release分支: master-fetch-dev
 
 ## 总览
 
