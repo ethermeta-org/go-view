@@ -1,3 +1,9 @@
+## 分支说明
+当前分支`main`, 由`master-fetch`分支签出,如果后续需要合并原仓库代码,需要从`master-fetch`合并到`main`分支
+
+1. 纯前端分支: master
+2. 带有后端请求分支: master-fetch
+
 ## 总览
 
 **`master-fetch` 分支是带有后端接口请求的分支**
@@ -7,6 +13,27 @@
 **接口说明地址：[https://docs.apipost.cn/preview/5aa85d10a59d66ce/ddb813732007ad2b?target_id=84dbc5b0-158f-4bcb-8f74-793ac604ada3#3e053622-1e76-43f9-a039-756aee822dbb](https://docs.apipost.cn/preview/5aa85d10a59d66ce/ddb813732007ad2b?target_id=84dbc5b0-158f-4bcb-8f74-793ac604ada3#3e053622-1e76-43f9-a039-756aee822dbb)**
 
 ## 使用
+
+### 依赖安装
+```shell
+pnpm i
+```
+### 运行
+```shell
+pnpm dev
+```
+### 构建
+```shell
+pnpm build
+```
+如果构建过程中出现`FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory` 堆栈内存溢出的情况按照下面的步骤解决, 其主要是修改nodejs内存大小的限制
+```shell
+npm install -g increase-memory-limit
+```
+然后在项目的根目录下运行
+```shell
+increase-memory-limit
+```
 
 所有的接口地址位置：`src\api\path\*`
 
