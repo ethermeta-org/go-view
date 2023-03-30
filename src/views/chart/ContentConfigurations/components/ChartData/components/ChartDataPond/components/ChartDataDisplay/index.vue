@@ -36,11 +36,7 @@
           </setting-item-box>
 
           <setting-item-box name="接口地址" :alone="true">
-            <n-input
-              size="small"
-              :placeholder="requestUrl || '暂无'"
-              :disabled="true"
-            >
+            <n-input size="small" :placeholder="requestUrl || '暂无'" :disabled="true">
               <template #prefix>
                 <n-icon :component="FlashIcon" />
               </template>

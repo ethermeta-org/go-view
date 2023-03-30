@@ -1,5 +1,12 @@
 <template>
-  <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" :manual-update="isPreview()" autoresize>
+  <v-chart
+    ref="vChartRef"
+    :init-options="initOptions"
+    :theme="themeColor"
+    :option="option.value"
+    :manual-update="isPreview()"
+    autoresize
+  >
   </v-chart>
 </template>
 
@@ -67,7 +74,7 @@ registerMap(`${props.chartConfig.option.mapRegion.adcode}`, { geoJSON: {} as any
 // 进行更换初始化地图 如果为china 单独处理
 const registerMapInitAsync = async () => {
   await nextTick()
-  const adCode = `${props.chartConfig.option.mapRegion.adcode}`;
+  const adCode = `${props.chartConfig.option.mapRegion.adcode}`
   if (adCode !== 'china') {
     await getGeojson(adCode)
   } else {

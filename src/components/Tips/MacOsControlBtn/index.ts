@@ -1,3 +1,3 @@
-import MacOsControlBtn from './index.vue';
+import MacOsControlBtn from './index.vue'
 
-export { MacOsControlBtn };
+export { MacOsControlBtn }

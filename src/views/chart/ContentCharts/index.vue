@@ -1,12 +1,6 @@
 <template>
   <!-- 左侧所有组件的展示列表 -->
-  <content-box
-    class="go-content-charts"
-    :class="{ scoped: !getCharts }"
-    title="组件"
-    :depth="1"
-    :backIcon="false"
-  >
+  <content-box class="go-content-charts" :class="{ scoped: !getCharts }" title="组件" :depth="1" :backIcon="false">
     <template #icon>
       <n-icon size="14" :depth="2">
         <bar-chart-icon></bar-chart-icon>
@@ -28,13 +22,7 @@
           @update:value="clickItemHandle"
         ></n-menu>
         <div class="menu-component-box">
-          <go-skeleton
-            :load="!selectOptions"
-            round
-            text
-            :repeat="2"
-            style="width: 90%"
-          ></go-skeleton>
+          <go-skeleton :load="!selectOptions" round text :repeat="2" style="width: 90%"></go-skeleton>
           <charts-option-content
             v-if="selectOptions"
             :selectOptions="selectOptions"
@@ -57,7 +45,7 @@ import {
   selectOptions,
   selectValue,
   clickItemHandle,
-  menuOptions,
+  menuOptions
 } from './hooks/useAside.hook'
 </script>
 

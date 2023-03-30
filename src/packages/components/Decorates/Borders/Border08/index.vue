@@ -10,29 +10,16 @@
 
         <mask :id="mask">
           <circle cx="0" cy="0" r="150" :fill="`url(#${gradient})`">
-            <animateMotion
-              :dur="`${dur}s`"
-              :path="pathD"
-              rotate="auto"
-              repeatCount="indefinite"
-            />
+            <animateMotion :dur="`${dur}s`" :path="pathD" rotate="auto" repeatCount="indefinite" />
           </circle>
         </mask>
       </defs>
 
-      <polygon
-        :fill="backgroundColor"
-        :points="`5, 5 ${w - 5}, 5 ${w - 5} ${h - 5} 5, ${h - 5}`"
-      />
+      <polygon :fill="backgroundColor" :points="`5, 5 ${w - 5}, 5 ${w - 5} ${h - 5} 5, ${h - 5}`" />
 
       <use :stroke="colors[0]" stroke-width="1" :xlink:href="`#${path}`" />
 
-      <use
-        :stroke="colors[1]"
-        stroke-width="3"
-        :xlink:href="`#${path}`"
-        :mask="`url(#${mask})`"
-      >
+      <use :stroke="colors[1]" stroke-width="3" :xlink:href="`#${path}`" :mask="`url(#${mask})`">
         <animate
           attributeName="stroke-dasharray"
           :from="`0, ${length}`"
@@ -62,9 +49,7 @@ const gradient = `border-box-08-gradient-${getUUID()}`
 const mask = `border-box-08-mask-${getUUID()}`
 
 const { w, h } = toRefs(props.chartConfig.attr)
-const { colors, dur, backgroundColor, reverse } = toRefs(
-  props.chartConfig.option
-)
+const { colors, dur, backgroundColor, reverse } = toRefs(props.chartConfig.option)
 
 const length = computed(() => {
   return (w.value + h.value - 5) * 2
@@ -72,12 +57,8 @@ const length = computed(() => {
 
 const pathD = computed(() => {
   if (reverse.value)
-    return `M 2.5, 2.5 L 2.5, ${h.value - 2.5} L ${w.value - 2.5}, ${
-      h.value - 2.5
-    } L ${w.value - 2.5}, 2.5 L 2.5, 2.5`
-  return `M2.5, 2.5 L${w.value - 2.5}, 2.5 L${w.value - 2.5}, ${
-    h.value - 2.5
-  } L2.5, ${h.value - 2.5} L2.5, 2.5`
+    return `M 2.5, 2.5 L 2.5, ${h.value - 2.5} L ${w.value - 2.5}, ${h.value - 2.5} L ${w.value - 2.5}, 2.5 L 2.5, 2.5`
+  return `M2.5, 2.5 L${w.value - 2.5}, 2.5 L${w.value - 2.5}, ${h.value - 2.5} L2.5, ${h.value - 2.5} L2.5, 2.5`
 })
 </script>
 

@@ -17,7 +17,7 @@ let key = ref(Date.now())
 ;[SavePageEnum.JSON, SavePageEnum.CHART].forEach((saveEvent: string) => {
   if (!window.opener) return
   window.opener.addEventListener(saveEvent, async (e: any) => {
-    const localStorageInfo: ChartEditStorageType = await getSessionStorageInfo() as unknown as ChartEditStorageType
+    const localStorageInfo: ChartEditStorageType = (await getSessionStorageInfo()) as unknown as ChartEditStorageType
     setSessionStorage(StorageEnum.GO_CHART_STORAGE_LIST, [{ ...e.detail, id: localStorageInfo.id }])
     key.value = Date.now()
   })

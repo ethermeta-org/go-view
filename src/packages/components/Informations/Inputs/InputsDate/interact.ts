@@ -58,7 +58,7 @@ export const interactActions: InteractActionsType[] = [
       [ComponentInteractEventEnum.QUARTER]: time,
       [ComponentInteractEventEnum.QUARTER_RANGE]: timeRange,
       [ComponentInteractEventEnum.YEAR]: time,
-      [ComponentInteractEventEnum.YEAR_RANGE]: timeRange,
+      [ComponentInteractEventEnum.YEAR_RANGE]: timeRange
     }
   }
 ]

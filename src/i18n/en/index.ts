@@ -25,7 +25,7 @@ const global = {
   r_unpublish: 'Unpublish',
   r_download: 'Download',
   r_delete: 'Delete',
-  r_more: 'More',
+  r_more: 'More'
 }
 
 const http = {

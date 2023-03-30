@@ -13,8 +13,7 @@ export const option = {
   borderRadius: 10
 }
 
-export default class Config extends PublicConfigClass implements CreateComponentType
-{
+export default class Config extends PublicConfigClass implements CreateComponentType {
   public key = ImageConfig.key
   public chartConfig = cloneDeep(ImageConfig)
   public option = cloneDeep(option)

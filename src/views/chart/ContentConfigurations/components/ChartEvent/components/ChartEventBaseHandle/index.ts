@@ -1,3 +1,3 @@
-import  ChartEventBaseHandle from './index.vue'
+import ChartEventBaseHandle from './index.vue'
 
 export { ChartEventBaseHandle }

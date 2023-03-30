@@ -1,14 +1,14 @@
 <template>
   <collapse-item name="路径" :expanded="true">
-      <setting-item v-for="(item, index) in optionData.dataset" :key="index">
-        <n-input-group>
-          <n-input v-model:value="optionData.dataset[index]" size="small" placeholder="请输入图片地址"></n-input>
-          <n-button ghost @click="optionData.dataset.splice(index, 1)"> - </n-button>
-        </n-input-group>
-      </setting-item>
-      <setting-item>
-        <n-button size="small" @click="optionData.dataset.push('')"> + 新增</n-button>
-      </setting-item>
+    <setting-item v-for="(item, index) in optionData.dataset" :key="index">
+      <n-input-group>
+        <n-input v-model:value="optionData.dataset[index]" size="small" placeholder="请输入图片地址"></n-input>
+        <n-button ghost @click="optionData.dataset.splice(index, 1)"> - </n-button>
+      </n-input-group>
+    </setting-item>
+    <setting-item>
+      <n-button size="small" @click="optionData.dataset.push('')"> + 新增</n-button>
+    </setting-item>
   </collapse-item>
   <collapse-item name="轮播属性" :expanded="true">
     <setting-item-box name="播放器">

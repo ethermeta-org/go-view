@@ -14,10 +14,10 @@
     <tbody>
       <tr v-for="(item, index) in tableArray.content" :key="index">
         <td>
-          {{ item.key || '暂无'}}
+          {{ item.key || '暂无' }}
         </td>
         <td>
-          {{ item.value  || '暂无'}}
+          {{ item.value || '暂无' }}
         </td>
       </tr>
     </tbody>
@@ -39,7 +39,7 @@ const defaultItem = {
   value: ''
 }
 const tableArray = reactive<{
-  content: typeof defaultItem[]
+  content: (typeof defaultItem)[]
 }>({ content: [] })
 
 // 监听选项

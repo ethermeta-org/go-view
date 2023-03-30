@@ -11,18 +11,15 @@ import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHis
 // 全局设置
 import { useSettingStore } from '@/store/modules/settingStore/settingStore'
 // 历史类型
-import { HistoryActionTypeEnum, HistoryItemType, HistoryTargetTypeEnum } from '@/store/modules/chartHistoryStore/chartHistoryStore.d'
+import {
+  HistoryActionTypeEnum,
+  HistoryItemType,
+  HistoryTargetTypeEnum
+} from '@/store/modules/chartHistoryStore/chartHistoryStore.d'
 // 画布枚举
 import { MenuEnum, SyncEnum } from '@/enums/editPageEnum'
 
-import {
-  getUUID,
-  loadingStart,
-  loadingFinish,
-  loadingError,
-  isString,
-  isArray
-} from '@/utils'
+import { getUUID, loadingStart, loadingFinish, loadingError, isString, isArray } from '@/utils'
 
 import {
   ProjectInfoType,
@@ -194,7 +191,7 @@ export const useChartEditStore = defineStore({
   },
   actions: {
     // * 设置 peojectInfo 数据项
-    setProjectInfo<T extends keyof ProjectInfoType,  K extends ProjectInfoType[T]>(key: T, value: K) {
+    setProjectInfo<T extends keyof ProjectInfoType, K extends ProjectInfoType[T]>(key: T, value: K) {
       this.projectInfo[key] = value
     },
     // * 设置 editCanvas 数据项
@@ -531,15 +528,15 @@ export const useChartEditStore = defineStore({
           e.id = getUUID()
           // 分组列表生成新 id
           if (e.isGroup) {
-            (e as CreateComponentGroupType).groupList.forEach((item: CreateComponentType) => {
+            ;(e as CreateComponentGroupType).groupList.forEach((item: CreateComponentType) => {
               item.id = getUUID()
             })
           }
-        
+
           return e
         }
         const isCut = recordCharts.type === HistoryActionTypeEnum.CUT
-        const targetList = Array.isArray(recordCharts.charts) ? recordCharts.charts : [ recordCharts.charts ]
+        const targetList = Array.isArray(recordCharts.charts) ? recordCharts.charts : [recordCharts.charts]
         // 多项
         targetList.forEach((e: CreateComponentType | CreateComponentGroupType) => {
           this.addComponentList(parseHandle(e), undefined, true)

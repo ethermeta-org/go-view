@@ -140,9 +140,8 @@ const calcCapsuleLengthAndLabelData = (dataset: any) => {
     const labelData = Array.from(new Set(new Array(6).fill(0).map((v, i) => Math.ceil(i * oneFifth))))
 
     state.labelData = labelData
-
   } catch (error) {
-    console.warn(error);
+    console.warn(error)
   }
 }
 

@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="`go-preview ${chartEditStore.editCanvasConfig.previewScaleType}`"
-  >
+  <div :class="`go-preview ${chartEditStore.editCanvasConfig.previewScaleType}`">
     <template v-if="showEntity">
       <!-- 实体区域 -->
       <div ref="entityRef" class="go-preview-entity">
@@ -47,22 +45,20 @@ const chartEditStore = useChartEditStore() as unknown as ChartEditStorageType
 setTitle(`预览-${chartEditStore.editCanvasConfig.projectName}`)
 
 // @ts-ignore
-if(chartEditStore.isRelease === false) {
+if (chartEditStore.isRelease === false) {
   routerTurnByName(PageEnum.REDIRECT_UN_PUBLISH_NAME, true, false)
 }
 
 const previewRefStyle = computed(() => {
   return {
     ...getEditCanvasConfigStyle(chartEditStore.editCanvasConfig),
-    ...getFilterStyle(chartEditStore.editCanvasConfig.filterShow ? chartEditStore.editCanvasConfig : undefined),
+    ...getFilterStyle(chartEditStore.editCanvasConfig.filterShow ? chartEditStore.editCanvasConfig : undefined)
   }
 })
 
 const showEntity = computed(() => {
   const type = chartEditStore.editCanvasConfig.previewScaleType
-  return (
-    type === PreviewScaleEnum.SCROLL_Y || type === PreviewScaleEnum.SCROLL_X
-  )
+  return type === PreviewScaleEnum.SCROLL_Y || type === PreviewScaleEnum.SCROLL_X
 })
 
 useStore(chartEditStore)

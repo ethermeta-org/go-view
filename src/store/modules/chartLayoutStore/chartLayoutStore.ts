@@ -62,7 +62,7 @@ export const useChartLayoutStore = defineStore({
       // 存储本地
       setLocalStorage(GO_CHART_LAYOUT_STORE, this.$state)
       // 这里需要标记重置画布位置
-      this.rePositionCanvas = true;
+      this.rePositionCanvas = true
       // 重新计算拖拽区域缩放比例
       setTimeout(() => {
         chartEditStore.computedScale()

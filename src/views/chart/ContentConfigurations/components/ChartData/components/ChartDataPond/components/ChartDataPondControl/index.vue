@@ -82,9 +82,12 @@ const pondData = computed(() => {
   return data[0]
 })
 
-watch(() => props.modelShow, (newValue) => {
-  modelShowRef.value = newValue
-})
+watch(
+  () => props.modelShow,
+  newValue => {
+    modelShowRef.value = newValue
+  }
+)
 
 watch(
   () => pondData.value,

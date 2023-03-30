@@ -242,7 +242,7 @@ const ionicons5 = {
   // 眼睛
   EyeOutlineIcon,
   EyeOffOutlineIcon,
-  // 图表列表 
+  // 图表列表
   AlbumsIcon,
   // 分析
   AnalyticsIcon

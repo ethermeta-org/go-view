@@ -14,7 +14,7 @@
         </template>
       </layout-header-pro>
       <n-layout-content content-style="overflow:hidden; display: flex">
-        <div style="overflow:hidden; display: flex">
+        <div style="overflow: hidden; display: flex">
           <content-charts></content-charts>
           <content-layers></content-layers>
         </div>
@@ -60,19 +60,14 @@ const ContentConfigurations = loadAsyncComponent(() => import('./ContentConfigur
 const ContentLoad = loadAsyncComponent(() => import('./ContentLoad/index.vue'))
 
 // 右键
-const {
-  menuOptions,
-  onClickOutSide,
-  mousePosition,
-  handleMenuSelect
-} = useContextMenu()
+const { menuOptions, onClickOutSide, mousePosition, handleMenuSelect } = useContextMenu()
 </script>
 
 <style lang="scss" scoped>
-@include go("chart") {
+@include go('chart') {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  @include background-image("background-image");
+  @include background-image('background-image');
 }
 </style>

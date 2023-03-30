@@ -124,7 +124,7 @@ const sendHandle = async () => {
     }
     window['$message'].warning('没有拿到返回值，请检查接口！')
   } catch (error) {
-    console.error(error);
+    console.error(error)
     loading.value = false
     window['$message'].warning('数据异常，请检查参数！')
   }

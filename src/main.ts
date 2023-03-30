@@ -56,4 +56,3 @@ async function appInit() {
 appInit().then(() => {
   initFunction()
 })
-

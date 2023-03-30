@@ -16,23 +16,23 @@ import type { ChartColorsNameType, CustomColorsType, GlobalThemeJsonType } from 
 // 项目数据枚举
 export enum ProjectInfoEnum {
   // ID
-  PROJECT_ID = "projectId",
+  PROJECT_ID = 'projectId',
   // 名称
   PROJECT_NAME = 'projectName',
   // 描述
   REMARKS = 'remarks',
   // 缩略图
-  THUMBNAIL= 'thumbnail',
+  THUMBNAIL = 'thumbnail',
   // 是否公开发布
   RELEASE = 'release'
 }
 
 // 项目数据
 export type ProjectInfoType = {
-  [ProjectInfoEnum.PROJECT_ID]: string,
-  [ProjectInfoEnum.PROJECT_NAME]: string,
-  [ProjectInfoEnum.REMARKS]: string,
-  [ProjectInfoEnum.THUMBNAIL]: string,
+  [ProjectInfoEnum.PROJECT_ID]: string
+  [ProjectInfoEnum.PROJECT_NAME]: string
+  [ProjectInfoEnum.REMARKS]: string
+  [ProjectInfoEnum.THUMBNAIL]: string
   [ProjectInfoEnum.RELEASE]: boolean
 }
 
@@ -48,7 +48,7 @@ export enum EditCanvasTypeEnum {
   IS_CREATE = 'isCreate',
   IS_DRAG = 'isDrag',
   IS_SELECT = 'isSelect',
-  IS_CODE_EDIT="isCodeEdit"
+  IS_CODE_EDIT = 'isCodeEdit'
 }
 
 // 编辑区域（临时）
@@ -93,11 +93,11 @@ export enum EditCanvasConfigEnum {
 // 画布属性（需保存）
 export type EditCanvasConfigType = {
   // ID
-  [EditCanvasConfigEnum.PROJECT_ID]: string,
+  [EditCanvasConfigEnum.PROJECT_ID]: string
   // 项目名称
-  [EditCanvasConfigEnum.PROJECT_NAME]?: string,
+  [EditCanvasConfigEnum.PROJECT_NAME]?: string
   // 项目描述
-  [EditCanvasConfigEnum.REMARKS]: string,
+  [EditCanvasConfigEnum.REMARKS]: string
   // 滤镜-启用
   [FilterEnum.FILTERS_SHOW]: boolean
   // 滤镜-色相
@@ -130,7 +130,7 @@ export type EditCanvasConfigType = {
   // 图表主题颜色
   [EditCanvasConfigEnum.CHART_THEME_COLOR]: ChartColorsNameType
   // 自定义图表主题颜色
-  [EditCanvasConfigEnum.CHART_CUSTOM_THEME_COLOR_INFO]?: CustomColorsType[] 
+  [EditCanvasConfigEnum.CHART_CUSTOM_THEME_COLOR_INFO]?: CustomColorsType[]
   // 图表全局配置
   [EditCanvasConfigEnum.CHART_THEME_SETTING]: GlobalThemeJsonType
   // 图表主题颜色
@@ -197,8 +197,8 @@ type RequestPublicConfigType = {
 
 // 数据池项类型
 export type RequestDataPondItemType = {
-  dataPondId: string,
-  dataPondName: string,
+  dataPondId: string
+  dataPondName: string
   dataPondRequestConfig: RequestConfigType
 }
 

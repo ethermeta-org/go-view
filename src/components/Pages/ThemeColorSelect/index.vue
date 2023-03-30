@@ -21,15 +21,8 @@
           <div class="color-name-detail">
             <n-text v-if="appThemeDetail" class="color-name">{{ appThemeDetail.name }}</n-text>
             <n-text v-else class="color-name">中国色</n-text>
-            <n-text
-              v-if="appThemeDetail"
-              class="color-name-Pinyin"
-            >{{ appThemeDetail.pinyin.toUpperCase() }}</n-text>
-            <div
-              v-if="appThemeDetail"
-              class="select-color"
-              :style="{ backgroundColor: designStore.appTheme }"
-            ></div>
+            <n-text v-if="appThemeDetail" class="color-name-Pinyin">{{ appThemeDetail.pinyin.toUpperCase() }}</n-text>
+            <div v-if="appThemeDetail" class="select-color" :style="{ backgroundColor: designStore.appTheme }"></div>
           </div>
           <img :src="themeColorLogo" />
         </div>
@@ -52,9 +45,7 @@ import { loadAsyncComponent } from '@/utils'
 import { useScroll } from '@vueuse/core'
 import designColor from '@/settings/designColor.json'
 
-const ColorList = loadAsyncComponent(() =>
-  import('./components/ColorList.vue')
-)
+const ColorList = loadAsyncComponent(() => import('./components/ColorList.vue'))
 const { ColorWandIcon, CloseIcon } = icon.ionicons5
 
 let splitNumber = 50
@@ -65,7 +56,7 @@ const contentLeftRef = ref<HTMLElement | null>(null)
 const designColorSplit = ref(designColor.slice(0, splitNumber))
 
 const { arrivedState } = useScroll(contentLeftRef, {
-  offset: { bottom: 200 },
+  offset: { bottom: 200 }
 })
 const { bottom } = toRefs(arrivedState)
 
@@ -77,23 +68,29 @@ const colorSelectHandle = (color: AppThemeColorType) => {
   designStore.setAppColor(color)
 }
 
-watch(() => bottom.value, (newData: boolean) => {
-  if (newData) {
-    splitNumber = splitNumber + 50
-    designColorSplit.value = designColor.slice(0, splitNumber)
+watch(
+  () => bottom.value,
+  (newData: boolean) => {
+    if (newData) {
+      splitNumber = splitNumber + 50
+      designColorSplit.value = designColor.slice(0, splitNumber)
+    }
   }
-})
+)
 
-watch(() => modelShow.value, (modelShow: boolean) => {
-  if (!modelShow) {
-    splitNumber = 50
+watch(
+  () => modelShow.value,
+  (modelShow: boolean) => {
+    if (!modelShow) {
+      splitNumber = 50
+    }
   }
-})
+)
 </script>
 
 <style lang="scss" scoped>
 $height: 85vh;
-@include go("system-color-setting") {
+@include go('system-color-setting') {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -104,7 +101,7 @@ $height: 85vh;
   border-radius: 15px;
   overflow: hidden;
   @extend .go-background-filter;
-  @include hover-border-color("background-color5");
+  @include hover-border-color('background-color5');
   .title {
     margin: 0;
   }
@@ -135,7 +132,7 @@ $height: 85vh;
           width: 100px;
           height: 20px;
           border-radius: 3px;
-          background-image: url("@/assets/images/exception/texture.png");
+          background-image: url('@/assets/images/exception/texture.png');
         }
         .color-name {
           font-family: serif;

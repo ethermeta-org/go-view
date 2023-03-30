@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosRequestConfig, Axios } from 'axios'
-import { ResultEnum, ModuleTypeEnum } from "@/enums/httpEnum"
-import { PageEnum, ErrorPageNameMap } from "@/enums/pageEnum"
+import { ResultEnum, ModuleTypeEnum } from '@/enums/httpEnum'
+import { PageEnum, ErrorPageNameMap } from '@/enums/pageEnum'
 import { StorageEnum } from '@/enums/storageEnum'
 import { axiosPre } from '@/settings/httpSetting'
 import { SystemStoreEnum, SystemStoreUserInfoEnum } from '@/store/modules/systemStore/systemStore.d'
@@ -19,9 +19,9 @@ export interface MyRequestInstance extends Axios {
 }
 
 const axiosInstance = axios.create({
-    baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
-    timeout: ResultEnum.TIMEOUT,
-    headers: {'X-Org-Name': 'oneshare'}
+  baseURL: `${import.meta.env.PROD ? import.meta.env.VITE_PRO_PATH : ''}${axiosPre}`,
+  timeout: ResultEnum.TIMEOUT,
+  headers: { 'X-Org-Name': 'oneshare' }
 }) as unknown as MyRequestInstance
 
 axiosInstance.interceptors.request.use(
@@ -75,7 +75,7 @@ axiosInstance.interceptors.response.use(
       redirectErrorPage(code)
       return Promise.resolve(res.data)
     }
-    
+
     // 提示错误
     window['$message'].error(window['$t']((res.data as any).msg))
     return Promise.resolve(res.data)

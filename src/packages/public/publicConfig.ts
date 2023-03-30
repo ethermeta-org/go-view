@@ -9,12 +9,7 @@ import {
   RequestContentTypeEnum,
   RequestBodyEnum
 } from '@/enums/httpEnum'
-import {
-  ChartFrameEnum,
-  PublicConfigType,
-  CreateComponentType,
-  CreateComponentGroupType
-} from '@/packages/index.d'
+import { ChartFrameEnum, PublicConfigType, CreateComponentType, CreateComponentGroupType } from '@/packages/index.d'
 import { chartInitConfig } from '@/settings/designSetting'
 import cloneDeep from 'lodash/cloneDeep'
 

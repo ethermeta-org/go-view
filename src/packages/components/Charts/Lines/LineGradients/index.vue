@@ -1,5 +1,12 @@
 <template>
-  <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" :manual-update="isPreview()" autoresize></v-chart>
+  <v-chart
+    ref="vChartRef"
+    :init-options="initOptions"
+    :theme="themeColor"
+    :option="option.value"
+    :manual-update="isPreview()"
+    autoresize
+  ></v-chart>
 </template>
 
 <script setup lang="ts">
@@ -15,7 +22,7 @@ import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore
 import { chartColorsSearch, defaultTheme } from '@/settings/chartThemes/index'
 import { DatasetComponent, GridComponent, TooltipComponent, LegendComponent } from 'echarts/components'
 import { useChartDataFetch } from '@/hooks'
-import { isPreview, colorGradientCustomMerge} from '@/utils'
+import { isPreview, colorGradientCustomMerge } from '@/utils'
 
 const props = defineProps({
   themeSetting: {

@@ -72,9 +72,12 @@ const typeList = shallowRef([
   }
 ])
 
-watch(() => props.show, newValue => {
-  showRef.value = newValue
-})
+watch(
+  () => props.show,
+  newValue => {
+    showRef.value = newValue
+  }
+)
 
 // 关闭对话框
 const closeHandle = () => {
@@ -93,9 +96,9 @@ const btnHandle = async (key: string) => {
           // remarks
           remarks: null,
           // 图片地址
-          indexImage: null,
+          indexImage: null
         })
-        if(res && res.code === ResultEnum.SUCCESS) {
+        if (res && res.code === ResultEnum.SUCCESS) {
           window['$message'].success(window['$t']('project.create_success'))
 
           const { id } = res.data
@@ -106,7 +109,7 @@ const btnHandle = async (key: string) => {
       } catch (error) {
         window['$message'].error(window['$t']('project.create_failure'))
       }
-      break;
+      break
   }
 }
 </script>

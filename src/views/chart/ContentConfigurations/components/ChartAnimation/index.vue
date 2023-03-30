@@ -1,25 +1,15 @@
 <template>
   <div class="go-chart-configurations-animations" v-if="targetData">
-    <n-button
-      class="clear-btn go-my-2"
-      :disabled="!targetData.styles.animations.length"
-      @click="clearAnimation"
-    >
+    <n-button class="clear-btn go-my-2" :disabled="!targetData.styles.animations.length" @click="clearAnimation">
       清除动画
     </n-button>
-    <collapse-item
-      v-for="(item, index) in animations"
-      :key="index"
-      :name="item.label"
-      :expanded="true"
-    >
+    <collapse-item v-for="(item, index) in animations" :key="index" :name="item.label" :expanded="true">
       <n-grid :x-gap="6" :y-gap="10" :cols="3">
         <n-grid-item
           class="animation-item go-transition-quick"
           :class="[
             activeIndex(childrenItem.value) && 'active',
-            hoverPreviewAnimate === childrenItem.value &&
-              `animate__animated  animate__${childrenItem.value}`
+            hoverPreviewAnimate === childrenItem.value && `animate__animated  animate__${childrenItem.value}`
           ]"
           v-for="(childrenItem, index) in item.children"
           :key="index"

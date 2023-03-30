@@ -45,7 +45,7 @@
           v-model:value="optionData.carousel"
           :options="[
             { label: '单条轮播', value: 'single' },
-            { label: '整页轮播', value: 'page' },
+            { label: '整页轮播', value: 'page' }
           ]"
         />
       </SettingItem>

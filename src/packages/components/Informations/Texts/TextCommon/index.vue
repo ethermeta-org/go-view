@@ -82,7 +82,7 @@ const click = () => {
     border-width: v-bind('borderWidth + "px"');
     border-radius: v-bind('borderRadius + "px"');
     border-color: v-bind('borderColor');
-    
+
     background-color: v-bind('backgroundColor');
   }
 }

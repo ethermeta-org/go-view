@@ -4,20 +4,20 @@ export enum SystemStoreUserInfoEnum {
   TOKEN_NAME = 'tokenName',
   USER_ID = 'userId',
   USER_NAME = 'userName',
-  NICK_NAME = 'nickName',
+  NICK_NAME = 'nickName'
 }
 
 export interface UserInfoType {
-  [SystemStoreUserInfoEnum.USER_AVATAR]?: string,
-  [SystemStoreUserInfoEnum.USER_TOKEN]?: string,
-  [SystemStoreUserInfoEnum.TOKEN_NAME]?: string,
-  [SystemStoreUserInfoEnum.USER_ID]?: string,
-  [SystemStoreUserInfoEnum.USER_NAME]?: string,
-  [SystemStoreUserInfoEnum.NICK_NAME]?: string,
+  [SystemStoreUserInfoEnum.USER_AVATAR]?: string
+  [SystemStoreUserInfoEnum.USER_TOKEN]?: string
+  [SystemStoreUserInfoEnum.TOKEN_NAME]?: string
+  [SystemStoreUserInfoEnum.USER_ID]?: string
+  [SystemStoreUserInfoEnum.USER_NAME]?: string
+  [SystemStoreUserInfoEnum.NICK_NAME]?: string
 }
 
 export interface FetchInfoType {
-  OSSUrl?: string,
+  OSSUrl?: string
 }
 
 export enum SystemStoreEnum {

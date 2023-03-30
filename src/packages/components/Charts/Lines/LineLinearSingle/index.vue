@@ -1,5 +1,12 @@
 <template>
-  <v-chart ref="vChartRef" :init-options="initOptions" :theme="themeColor" :option="option.value" :manual-update="isPreview()" autoresize>
+  <v-chart
+    ref="vChartRef"
+    :init-options="initOptions"
+    :theme="themeColor"
+    :option="option.value"
+    :manual-update="isPreview()"
+    autoresize
+  >
   </v-chart>
 </template>
 

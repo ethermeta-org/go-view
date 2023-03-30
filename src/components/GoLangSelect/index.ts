@@ -1,3 +1,3 @@
-import GoLangSelect from './index.vue';
+import GoLangSelect from './index.vue'
 
-export { GoLangSelect };
+export { GoLangSelect }

@@ -59,9 +59,9 @@ const newPondItemInterval = (
   const globalUnit = requestGlobalConfig.requestIntervalUnit
 
   // 定时时间
-  const time = targetInterval  ? targetInterval : globalRequestInterval
+  const time = targetInterval ? targetInterval : globalRequestInterval
   // 单位
-  const unit = targetInterval  ? targetUnit : globalUnit
+  const unit = targetInterval ? targetUnit : globalUnit
   // 开启轮询
   if (time) fetchInterval = setInterval(fetchFn, intervalUnitHandle(time, unit))
 }

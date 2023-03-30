@@ -30,11 +30,9 @@
       </n-list-item>
 
       <n-list-item>
-        <n-space  class="go-mt-2" :size="20">
+        <n-space class="go-mt-2" :size="20">
           <n-text class="item-left">商业授权：</n-text>
-          <n-text>
-            若不想保留版权声明，请通过仓库/交流群 联系项目作者，进行授权
-          </n-text>
+          <n-text> 若不想保留版权声明，请通过仓库/交流群 联系项目作者，进行授权 </n-text>
         </n-space>
       </n-list-item>
     </n-list>
@@ -53,9 +51,12 @@ const emit = defineEmits(['update:modelShow'])
 const { HelpOutlineIcon, CloseIcon } = icon.ionicons5
 const modelShowRef = ref(false)
 
-watch(() => props.modelShow, (newValue) => {
-  modelShowRef.value = newValue
-})
+watch(
+  () => props.modelShow,
+  newValue => {
+    modelShowRef.value = newValue
+  }
+)
 
 const closeHandle = () => {
   emit('update:modelShow', false)

@@ -13,7 +13,7 @@ export const get = <T = any>(url: string, params?: object) => {
   return axiosInstance<T>({
     url: url,
     method: RequestHttpEnum.GET,
-    params: params,
+    params: params
   })
 }
 
@@ -174,7 +174,7 @@ export const customizeHttp = (targetParams: RequestConfigType, globalParams: Req
       headers['Content-Type'] = ContentTypeEnum.JSON
       //json对象也能使用'javasctipt:'来动态拼接参数
       data = translateStr(targetRequestParams.Body['json'])
-      if(typeof data === 'string')  data = JSON.parse(data)
+      if (typeof data === 'string') data = JSON.parse(data)
       // json 赋值给 data
       break
 
@@ -212,13 +212,13 @@ export const customizeHttp = (targetParams: RequestConfigType, globalParams: Req
   }
 
   try {
-    const url =  (new Function("return `" + `${requestOriginUrl}${requestUrl}`.trim() + "`"))();
+    const url = new Function('return `' + `${requestOriginUrl}${requestUrl}`.trim() + '`')()
     return axiosInstance({
-        url,
-        method: requestHttpType,
-        data,
-        params,
-        headers
+      url,
+      method: requestHttpType,
+      data,
+      params,
+      headers
     })
   } catch (error) {
     console.log(error)

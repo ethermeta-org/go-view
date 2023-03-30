@@ -30,7 +30,7 @@ watch(
       setTimeout(() => {
         percentage.value = newValue
         showModal.value = false
-      }, 500);
+      }, 500)
       return
     }
     percentage.value = newValue

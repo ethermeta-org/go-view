@@ -8,11 +8,7 @@ export const exportHandle = () => {
   chartEditStore.setTargetSelectChart(undefined)
 
   // 导出数据
-  downloadTextFile(
-    JSONStringify(chartEditStore.getStorageInfo || []),
-    undefined,
-    'json'
-  )
+  downloadTextFile(JSONStringify(chartEditStore.getStorageInfo || []), undefined, 'json')
 
   // 导出图片
   const range = document.querySelector('.go-edit-range') as HTMLElement

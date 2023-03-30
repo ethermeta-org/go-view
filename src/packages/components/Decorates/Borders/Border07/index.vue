@@ -3,21 +3,9 @@
     <svg :width="w" :height="h">
       <defs>
         <linearGradient :id="filterId" x1="0%" y1="0%" x2="100%" y2="100%">
-          <animate
-            attributeName="x1"
-            values="0%;100%;0%"
-            dur="10s"
-            begin="0s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="x1" values="0%;100%;0%" dur="10s" begin="0s" repeatCount="indefinite" />
 
-          <animate
-            attributeName="x2"
-            values="100%;0%;100%"
-            dur="10s"
-            begin="0s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="x2" values="100%;0%;100%" dur="10s" begin="0s" repeatCount="indefinite" />
 
           <stop offset="0%" :stop-color="colors[0]">
             <animate
@@ -48,8 +36,7 @@
           />
           <polyline
             fill="#fff"
-            :points="
-              `8, ${h * 0.15} 8, 3, ${w * 0.1 + 7}, 3
+            :points="`8, ${h * 0.15} 8, 3, ${w * 0.1 + 7}, 3
               ${w * 0.1}, 8 14, 8 14, ${h * 0.15 - 7}
             `"
           />
@@ -105,16 +92,19 @@
         </mask>
       </defs>
 
-      <polygon :fill="backgroundColor" :points="`
+      <polygon
+        :fill="backgroundColor"
+        :points="`
         15, 9 ${w * 0.1 + 1}, 9 ${w * 0.1 + 4}, 6 ${w * 0.52 + 2}, 6
         ${w * 0.52 + 6}, 10 ${w * 0.58 - 7}, 10 ${w * 0.58 - 2}, 6
         ${w * 0.9 + 2}, 6 ${w * 0.9 + 6}, 10 ${w - 10}, 10 ${w - 10}, ${h * 0.1 - 6}
         ${w - 6}, ${h * 0.1 - 1} ${w - 6}, ${h * 0.8 + 1} ${w - 10}, ${h * 0.8 + 6}
         ${w - 10}, ${h - 10} ${w * 0.92 + 7}, ${h - 10}  ${w * 0.92 + 2}, ${h - 6}
         11, ${h - 6} 11, ${h * 0.15 - 2} 15, ${h * 0.15 - 7}
-      `"/>
+      `"
+      />
 
-      <rect x="0" y="0" :width="w" :height="h" :fill="`url(#${filterId})`" :mask="`url(#${maskId})`"/>
+      <rect x="0" y="0" :width="w" :height="h" :fill="`url(#${filterId})`" :mask="`url(#${maskId})`" />
     </svg>
   </div>
 </template>

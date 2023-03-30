@@ -9,7 +9,7 @@
             :hidden="['remove']"
             @close="deleteHandle"
             @resize="resizeHandle"
-         ></mac-os-control-btn>
+          ></mac-os-control-btn>
         </div>
         <!-- 中间 -->
         <div class="list-content-img" @click="resizeHandle">
@@ -20,7 +20,7 @@
             :src="`${cardData.image}?time=${new Date().getTime()}`"
             :alt="cardData.title"
             :fallback-src="requireErrorImg()"
-         ></n-image>
+          ></n-image>
         </div>
       </div>
       <template #action>
@@ -32,16 +32,8 @@
           <div class="go-flex-items-center list-footer-ri">
             <n-space>
               <n-text>
-                <n-badge
-                  class="go-animation-twinkle"
-                  dot
-                  :color="cardData.release ? '#34c749' : '#fcbc40'"
-              ></n-badge>
-                {{
-                  cardData.release
-                    ? $t('project.release')
-                    : $t('project.unreleased')
-                }}
+                <n-badge class="go-animation-twinkle" dot :color="cardData.release ? '#34c749' : '#fcbc40'"></n-badge>
+                {{ cardData.release ? $t('project.release') : $t('project.unreleased') }}
               </n-text>
 
               <template v-for="item in fnBtnList" :key="item.key">
@@ -73,7 +65,7 @@
                 </n-tooltip>
               </template>
             </n-space>
-          <!-- end -->
+            <!-- end -->
           </div>
         </div>
       </template>
@@ -83,7 +75,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, PropType } from 'vue'
-import { renderIcon, renderLang,  requireErrorImg } from '@/utils'
+import { renderIcon, renderLang, requireErrorImg } from '@/utils'
 import { icon } from '@/plugins'
 import { MacOsControlBtn } from '@/components/Tips/MacOsControlBtn'
 import { Chartype } from '../../index.d'
@@ -141,9 +133,7 @@ const selectOptions = ref([
     key: 'd1'
   },
   {
-    label: props.cardData?.release
-      ? renderLang('global.r_unpublish')
-      : renderLang('global.r_publish'),
+    label: props.cardData?.release ? renderLang('global.r_unpublish') : renderLang('global.r_publish'),
     key: 'release',
     icon: renderIcon(SendIcon)
   },

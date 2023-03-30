@@ -18,10 +18,13 @@
       </n-space>
     </div>
 
-    <div class="content" :class="{
-      'content-height-show-top-bottom': showBottom || showTop,
-      'content-height-show-both': showBottom && showTop
-    }">
+    <div
+      class="content"
+      :class="{
+        'content-height-show-top-bottom': showBottom || showTop,
+        'content-height-show-both': showBottom && showTop
+      }"
+    >
       <template v-if="disabledScroll">
         <slot></slot>
       </template>
@@ -87,7 +90,7 @@ defineProps({
   disabledScroll: {
     type: Boolean,
     default: false
-  },
+  }
 })
 
 const backHandle = () => {

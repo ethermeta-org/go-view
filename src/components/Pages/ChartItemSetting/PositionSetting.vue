@@ -1,34 +1,19 @@
 <template>
-  <n-divider style="margin: 10px 0;" ></n-divider>
-  <n-space :size="8" justify="space-between" style="margin-top: 10px;">
-    <n-button
-      secondary
-      v-for="item in positionList"
-      :key="item.key"
-      @click="positonHandle(item.key)"
-    >
+  <n-divider style="margin: 10px 0"></n-divider>
+  <n-space :size="8" justify="space-between" style="margin-top: 10px">
+    <n-button secondary v-for="item in positionList" :key="item.key" @click="positonHandle(item.key)">
       <template #icon>
-        <component :is="item.icon" ></component>
+        <component :is="item.icon"></component>
       </template>
     </n-button>
   </n-space>
   <setting-item-box name="位置">
-    <n-input-number
-      v-model:value="chartAttr.y"
-      :min="0"
-      size="small"
-      placeholder="px"
-    >
+    <n-input-number v-model:value="chartAttr.y" :min="0" size="small" placeholder="px">
       <template #prefix>
         <n-text depth="3">上</n-text>
       </template>
     </n-input-number>
-    <n-input-number
-      v-model:value="chartAttr.x"
-      :min="0"
-      size="small"
-      placeholder="px"
-    >
+    <n-input-number v-model:value="chartAttr.x" :min="0" size="small" placeholder="px">
       <template #prefix>
         <n-text depth="3">左</n-text>
       </template>

@@ -24,7 +24,7 @@ const props = defineProps({
   chartConfig: {
     type: Object as PropType<ConfigType>,
     required: true
-  },
+  }
 })
 
 let valueCatch = ''
@@ -34,9 +34,9 @@ const handleFocus = () => {
 }
 
 const handleBlur = () => {
-  if(!props.chartConfig.title.length) {
+  if (!props.chartConfig.title.length) {
     window['$message'].warning('请输入至少一个字符!')
-    props.chartConfig.title = valueCatch 
+    props.chartConfig.title = valueCatch
   }
 }
 </script>

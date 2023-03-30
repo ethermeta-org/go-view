@@ -12,7 +12,7 @@
 
       <n-list-item v-for="item in list" :key="item.key">
         <!-- 分割线 -->
-        <n-divider v-if="item.type === 'divider'" style="margin: 0;" />
+        <n-divider v-if="item.type === 'divider'" style="margin: 0" />
         <n-space v-else :size="40">
           <n-space>
             <!-- 左侧标题 -->
@@ -20,11 +20,7 @@
 
             <!-- 数据操作 -->
             <template v-if="item.type === 'switch'">
-              <n-switch
-                v-model:value="item.value"
-                size="small"
-                @update:value="handleChange($event, item)"
-              ></n-switch>
+              <n-switch v-model:value="item.value" size="small" @update:value="handleChange($event, item)"></n-switch>
             </template>
 
             <template v-else-if="item.type === 'number'">
@@ -119,7 +115,7 @@ const list = reactive<ListType[]>([
     value: settingStore.getChartToolsStatusHide,
     type: 'switch',
     name: '隐藏工具栏',
-    desc: '鼠标移入时，会展示切换到展开模式',
+    desc: '鼠标移入时，会展示切换到展开模式'
   },
   {
     key: SettingStoreEnums.CHART_TOOLS_STATUS,
@@ -167,9 +163,12 @@ const list = reactive<ListType[]>([
   }
 ])
 
-watch(() => props.modelShow, (newValue) => {
-  modelShowRef.value = newValue
-})
+watch(
+  () => props.modelShow,
+  newValue => {
+    modelShowRef.value = newValue
+  }
+)
 
 const closeHandle = () => {
   emit('update:modelShow', false)
@@ -181,7 +180,7 @@ const handleChange = (e: MouseEvent, item: ListType) => {
 </script>
 
 <style lang="scss" scoped>
-@include go("system-setting") {
+@include go('system-setting') {
   @extend .go-background-filter;
   min-width: 100px;
   max-width: 60vw;
@@ -197,10 +196,10 @@ const handleChange = (e: MouseEvent, item: ListType) => {
   }
   @include deep() {
     .n-list-item {
-      border-bottom: 0!important;
+      border-bottom: 0 !important;
     }
     .n-list-item__divider {
-      display: none!important;
+      display: none !important;
     }
   }
 }

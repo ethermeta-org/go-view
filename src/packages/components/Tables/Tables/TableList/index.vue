@@ -62,7 +62,8 @@ const status = reactive({
 const calcRowsData = () => {
   let { dataset, rowNum, sort } = status.mergedConfig
   // @ts-ignore
-  sort &&dataset.sort(({ value: a }, { value: b  } )  => {
+  sort &&
+    dataset.sort(({ value: a }, { value: b }) => {
       if (a > b) return -1
       if (a < b) return 1
       if (a === b) return 0
@@ -137,7 +138,7 @@ const onRestart = async () => {
     calcRowsData()
     let flag = true
     if (dataset.length <= rowNum) {
-      flag=false
+      flag = false
     }
     calcHeights(flag)
     animation(flag)

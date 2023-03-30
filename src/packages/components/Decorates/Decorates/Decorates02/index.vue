@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="go-decorates-2"
-    :style="`width:${w}px; height: ${lineHeight}px animation-duration:${dur}s`"
-  >
+  <div class="go-decorates-2" :style="`width:${w}px; height: ${lineHeight}px animation-duration:${dur}s`">
     <svg :width="w" :height="3">
       <polyline :stroke="colors[0]" :points="`0, 2.5 ${w}, 2.5`" />
       <polyline
@@ -23,8 +20,8 @@ import { CreateComponentType } from '@/packages/index.d'
 const props = defineProps({
   chartConfig: {
     type: Object as PropType<CreateComponentType>,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const { w, h } = toRefs(props.chartConfig.attr)

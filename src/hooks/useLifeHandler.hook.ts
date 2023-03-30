@@ -44,7 +44,7 @@ export const useLifeHandler = (chartConfig: CreateComponentType | CreateComponen
  * @param fnStr 用户方法体代码
  * @param event 鼠标事件
  */
- export function generateBaseFunc(fnStr: string) {
+export function generateBaseFunc(fnStr: string) {
   try {
     return new Function(`
       return (

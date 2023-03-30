@@ -17,7 +17,7 @@
       <template #action>
         <n-space justify="space-between">
           <n-space v-if="targetDataRequest">
-            <n-tag  :bordered="false" type="primary">名称：</n-tag>
+            <n-tag :bordered="false" type="primary">名称：</n-tag>
             <n-input
               v-model:value="targetDataRequest.dataPondName"
               ref="inputInstRef"
@@ -62,10 +62,12 @@ const pondName = ref()
 const inputInstRef = ref()
 const modelShowRef = ref(false)
 
-watch(() => props.modelShow, (newValue) => {
-  modelShowRef.value = newValue
-})
-
+watch(
+  () => props.modelShow,
+  newValue => {
+    modelShowRef.value = newValue
+  }
+)
 
 const closeHandle = () => {
   emit('update:modelShow', false)

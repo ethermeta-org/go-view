@@ -120,7 +120,7 @@ export interface PublicConfigType {
   }
   filter?: string
   status: StatusType
-  interactActions?: InteractActionsType[],
+  interactActions?: InteractActionsType[]
   events: {
     baseEvent: {
       [K in BaseEvent]?: string

@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import { ref, PropType, watch } from 'vue'
-import { FlipType }  from './index'
+import { FlipType } from './index'
 
 const props = defineProps({
   flipType: {

@@ -17,9 +17,7 @@
           <n-text>
             {{ item.hex }}
             <n-divider vertical></n-divider>
-            {{
-              `rgb(${item.RGB[0]}, ${item.RGB[1]}, ${item.RGB[2]})`
-            }}
+            {{ `rgb(${item.RGB[0]}, ${item.RGB[1]}, ${item.RGB[2]})` }}
           </n-text>
         </n-space>
       </n-space>
@@ -42,9 +40,7 @@
           <n-text>
             {{ item.hex }}
             <n-divider vertical></n-divider>
-            {{
-              `rgb(${item.RGB[0]}, ${item.RGB[1]}, ${item.RGB[2]})`
-            }}
+            {{ `rgb(${item.RGB[0]}, ${item.RGB[1]}, ${item.RGB[2]})` }}
           </n-text>
         </n-space>
       </n-space>
@@ -85,10 +81,10 @@ const colorSelectHandle = (color: AppThemeColorType) => {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0);
     &:hover {
-      @include hover-border-color("background-color5");
+      @include hover-border-color('background-color5');
     }
     &::after {
-      content: "";
+      content: '';
       z-index: -1;
       position: absolute;
       top: 0;

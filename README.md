@@ -1,10 +1,11 @@
 ## 分支说明
+
 当前分支`main` 带后端接口的`dev`分支, 如果后续需要合并原仓库代码,需要从`master-fetch-dev`合并到`main`分支
 
-1. 原仓库纯前端dev分支: dev
-2. 带有后端请求dev分支: master-fetch-dev
-3. 原仓库纯前端release分支: master
-4. 带有后端请求release分支: master-fetch
+1. 原仓库纯前端 dev 分支: dev
+2. 带有后端请求 dev 分支: master-fetch-dev
+3. 原仓库纯前端 release 分支: master
+4. 带有后端请求 release 分支: master-fetch
 
 ## 总览
 
@@ -17,22 +18,31 @@
 ## 使用
 
 ### 依赖安装
+
 ```shell
 pnpm i
 ```
+
 ### 运行
+
 ```shell
 pnpm dev
 ```
+
 ### 构建
+
 ```shell
 pnpm build
 ```
-如果构建过程中出现`FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory` 堆栈内存溢出的情况按照下面的步骤解决, 其主要是修改nodejs内存大小的限制
+
+如果构建过程中出现`FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory` 堆栈内存溢出的情况按照下面的步骤解决, 其主要是修改 nodejs 内存大小的限制
+
 ```shell
 npm install -g increase-memory-limit
 ```
+
 然后在项目的根目录下运行
+
 ```shell
 increase-memory-limit
 ```
@@ -69,7 +79,7 @@ export const get = (url: string, params?: object) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.GET,
-    params: params,
+    params: params
   })
 }
 
@@ -122,22 +132,21 @@ export const http = (type?: RequestHttpEnum) => {
       return get
   }
 }
-
 ```
 
 ## 代码提交
 
-* feat: 新功能
-* fix: 修复 Bug
-* docs: 文档修改
-* perf: 性能优化
-* revert: 版本回退
-* ci: CICD集成相关
-* test: 添加测试代码
-* refactor: 代码重构
-* build: 影响项目构建或依赖修改
-* style: 不影响程序逻辑的代码修改
-* chore: 不属于以上类型的其他类型(日常事务)
+- feat: 新功能
+- fix: 修复 Bug
+- docs: 文档修改
+- perf: 性能优化
+- revert: 版本回退
+- ci: CICD 集成相关
+- test: 添加测试代码
+- refactor: 代码重构
+- build: 影响项目构建或依赖修改
+- style: 不影响程序逻辑的代码修改
+- chore: 不属于以上类型的其他类型(日常事务)
 
 ## 交流
 

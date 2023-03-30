@@ -23,7 +23,7 @@ export const option = {
   fontWeight: 'normal',
 
   //阴影
-  showShadow:  true,
+  showShadow: true,
   hShadow: 0,
   vShadow: 0,
   blurShadow: 8,

@@ -9,7 +9,7 @@ export const option = {
   dataset: [
     'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg',
     'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg',
-    'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg',
+    'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg'
   ],
   // 自动播放
   autoplay: true,
@@ -18,23 +18,23 @@ export const option = {
   // 每页显示的图片数量
   slidesPerview: 1,
   // 轮播方向
-  direction: "horizontal",
+  direction: 'horizontal',
   // 拖曳切换
   draggable: true,
   // 居中显示
   centeredSlides: false,
   // 过渡效果
-  effect: "slide",
+  effect: 'slide',
   // 是否显示指示点
   showDots: true,
   // 指示器样式
-  dotType: "dot",
+  dotType: 'dot',
   // 指示器位置
-  dotPlacement: "bottom",
+  dotPlacement: 'bottom',
   // 显示箭头
   showArrow: false,
   // 图片样式
-  fit: "contain",
+  fit: 'contain'
 }
 
 export default class Config extends PublicConfigClass implements CreateComponentType {

@@ -2,7 +2,7 @@
 import { lang } from '@/settings/designSetting'
 import { createI18n } from 'vue-i18n' //引入vue-i18n组件
 import { getLocalStorage } from '@/utils'
-import { StorageEnum }from '@/enums/storageEnum'
+import { StorageEnum } from '@/enums/storageEnum'
 import { LangEnum } from '@/enums/styleEnum'
 import { LangStateType } from '@/store/modules/langStore/langStore.d'
 import zh from './zh/index'
@@ -24,7 +24,7 @@ export const langList = [
 
 const i18n = createI18n({
   legacy: false,
-  globalInjection:true,
+  globalInjection: true,
   locale: langStorage?.lang || lang,
   fallbackLocale: langStorage?.lang || lang,
   messages: {

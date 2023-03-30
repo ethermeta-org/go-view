@@ -44,10 +44,12 @@ const props = defineProps({
   modelShow: Boolean
 })
 
-
-watch(() => props.modelShow, (newValue) => {
-  modelShowRef.value = newValue
-})
+watch(
+  () => props.modelShow,
+  newValue => {
+    modelShowRef.value = newValue
+  }
+)
 
 // 快捷键
 const shortcutKeyOptions = [
@@ -115,7 +117,7 @@ const shortcutKeyOptions = [
   {
     label: '保存',
     win: `${WinKeyboard.CTRL.toUpperCase()} + S `,
-    mac: `${MacKeyboard.CTRL.toUpperCase()} + S `,
+    mac: `${MacKeyboard.CTRL.toUpperCase()} + S `
   },
   {
     label: '多选',

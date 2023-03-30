@@ -1,11 +1,7 @@
 <template>
   <div class="go-apple-control-btn">
     <template v-for="item in filterBtnList" :key="item.key">
-      <div
-        class="btn"
-        :class="[item.key, disabled && 'disabled', mini && 'mini']"
-        @click.stop="handleClick(item.key)"
-      >
+      <div class="btn" :class="[item.key, disabled && 'disabled', mini && 'mini']" @click.stop="handleClick(item.key)">
         <n-icon size="10" class="icon-base" :class="{ hover: !disabled }">
           <component :is="item.icon"></component>
         </n-icon>
