@@ -1,3 +1,3 @@
-import I18n from './index.vue';
+import I18n from './index.vue'
 
-export { I18n };
+export { I18n }

@@ -75,7 +75,7 @@ const defaultItem = {
   error: false
 }
 const tableArray = reactive<{
-  content: typeof defaultItem[]
+  content: (typeof defaultItem)[]
 }>({ content: [] })
 
 // 失焦

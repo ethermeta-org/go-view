@@ -41,8 +41,8 @@ export const useChartLayoutStore = defineStore({
   actions: {
     setItem<T extends keyof ChartLayoutType, K extends ChartLayoutType[T]>(key: T, value: K): void {
       this.$patch(state => {
-        state[key]= value
-      });
+        state[key] = value
+      })
       setLocalStorage(GO_CHART_LAYOUT_STORE, this.$state)
       // 重新计算拖拽区域缩放比例
       setTimeout(() => {

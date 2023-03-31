@@ -70,22 +70,28 @@ export const chartColorsSearch = {
   macarons: ['#2ec7c9', '#b6a2de', 'rgba(182, 162, 222, 0.3)', 'rgba(46, 199, 201, 0.5)', 'rgba(182, 162, 222, 0.5)'],
 
   walden: ['#3fb1e3', '#6be6c1', 'rgba(68, 181, 226, 0.3)', 'rgba(63, 177, 227, 0.5)', 'rgba(107, 230, 193, 0.5)'],
-  purplePassion: ['#9b8bba', '#e098c7', 'rgba(182, 162, 222, 0.3)', 'rgba(155, 139, 186, 0.5)', 'rgba(237, 175, 218, 0.5)'],
+  purplePassion: [
+    '#9b8bba',
+    '#e098c7',
+    'rgba(182, 162, 222, 0.3)',
+    'rgba(155, 139, 186, 0.5)',
+    'rgba(237, 175, 218, 0.5)'
+  ],
   vintage: ['#d87c7c', '#919e8b', 'rgba(182, 162, 222, 0.3)', 'rgba(216, 124, 124, 0.5)', 'rgba(145, 158, 139, 0.5)'],
 
   chalk: ['#fc97af', '#87f7cf', 'rgba(135, 247, 207, 0.3)', 'rgba(252, 151, 175, 0.5)', 'rgba(135, 247, 207, 0.5)'],
   westeros: ['#516b91', '#edafda', 'rgba(81, 107, 145, 0.3)', 'rgba(81, 107, 145, 0.5)', 'rgba(89, 196, 230, 0.5)'],
   wonderland: ['#4ea397', '#22c3aa', 'rgba(68, 181, 226, 0.3)', 'rgba(78, 163, 151, 0.5)', 'rgba(34, 195, 170, 0.5)'],
-  
+
   essos: ['#893448', '#d95850', 'rgba(137, 52, 72, 0.3)', 'rgba(137, 52, 72, 0.5)', 'rgba(217, 88, 80, 0.5)'],
   shine: ['#c12e34', '#0098d9', 'rgba(137, 52, 72, 0.3)', 'rgba(193, 46, 52, 0.5)', 'rgba(230, 182, 0, 0.5)'],
-  roma: ['#e01f54', '#5e4ea5', 'rgba(137, 52, 72, 0.3)', 'rgba(224, 31, 84, 0.5)', 'rgba(94, 78, 165, 0.5)'],
+  roma: ['#e01f54', '#5e4ea5', 'rgba(137, 52, 72, 0.3)', 'rgba(224, 31, 84, 0.5)', 'rgba(94, 78, 165, 0.5)']
 }
 
 // 默认主题详细配置
 type ThemeJsonType = typeof themeJson
 export interface GlobalThemeJsonType extends Partial<ThemeJsonType> {
-  dataset?: any,
-  [T:string]: any
+  dataset?: any
+  [T: string]: any
 }
-export const globalThemeJson = {...themeJson, dataset: null,}
+export const globalThemeJson = { ...themeJson, dataset: null }

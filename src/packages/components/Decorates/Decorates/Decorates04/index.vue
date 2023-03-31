@@ -12,9 +12,7 @@
         :stroke="colors[0]"
         stroke-width="2"
         fill="transparent"
-        :points="`${xPos(20)}, 0 ${xPos(50)}, ${h / 2} ${xPos(w)}, ${
-          h / 2
-        }`"
+        :points="`${xPos(20)}, 0 ${xPos(50)}, ${h / 2} ${xPos(w)}, ${h / 2}`"
       />
 
       <polyline
@@ -34,8 +32,8 @@ import { CreateComponentType } from '@/packages/index.d'
 const props = defineProps({
   chartConfig: {
     type: Object as PropType<CreateComponentType>,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const { w, h } = toRefs(props.chartConfig.attr)

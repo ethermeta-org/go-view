@@ -3,12 +3,7 @@
     <shortcut-key-modal v-model:modelShow="modelShow"></shortcut-key-modal>
     <n-tooltip trigger="hover">
       <template #trigger>
-        <n-button
-          class="scale-btn"
-          secondary
-          size="small"
-          @click="modelShow = true"
-        >
+        <n-button class="scale-btn" secondary size="small" @click="modelShow = true">
           <n-icon size="21" :depth="3">
             <dicom-overlay-icon></dicom-overlay-icon>
           </n-icon>

@@ -17,7 +17,9 @@
           <div>
             <n-text>「 {{ chartConfig.categoryName }} 」</n-text>
             <n-text>—— </n-text>
-            <n-tag type="primary" :bordered="false" style="border-radius: 5px"> {{ requestContentTypeObj[requestContentType] }} </n-tag>
+            <n-tag type="primary" :bordered="false" style="border-radius: 5px">
+              {{ requestContentTypeObj[requestContentType] }}
+            </n-tag>
           </div>
           <n-button type="primary" @click="closeHandle">保存 & 发送请求</n-button>
         </n-space>

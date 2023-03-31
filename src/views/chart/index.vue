@@ -55,19 +55,14 @@ const ContentCharts = loadAsyncComponent(() => import('./ContentCharts/index.vue
 const ContentConfigurations = loadAsyncComponent(() => import('./ContentConfigurations/index.vue'))
 
 // 右键
-const {
-  menuOptions,
-  onClickOutSide,
-  mousePosition,
-  handleMenuSelect
-} = useContextMenu()
+const { menuOptions, onClickOutSide, mousePosition, handleMenuSelect } = useContextMenu()
 </script>
 
 <style lang="scss" scoped>
-@include go("chart") {
+@include go('chart') {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  @include background-image("background-image");
+  @include background-image('background-image');
 }
 </style>

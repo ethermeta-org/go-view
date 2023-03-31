@@ -1,6 +1,6 @@
 export enum ToolsStatusEnum {
   DOCK = 'dock',
-  ASIDE = 'aside',
+  ASIDE = 'aside'
 }
 
 export enum SettingStoreEnums {

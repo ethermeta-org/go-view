@@ -5,15 +5,15 @@ module.exports = {
       type: 'input',
       name: 'name',
       message: 'Please enter store name，such as "newStoreName" :',
-      validate (value) {
+      validate(value) {
         if (!value || value.trim === '') {
-          return 'name is required';
+          return 'name is required'
         }
-        return true;
-      },
+        return true
+      }
     }
   ],
-  actions: (data) => {
+  actions: data => {
     const dataName = data.name
 
     // 首字母大写
@@ -26,7 +26,7 @@ module.exports = {
         templateFile: './store-template/index.hbs',
         data: {
           name: data.name,
-          upperDataName,
+          upperDataName
         }
       },
       {
@@ -35,11 +35,11 @@ module.exports = {
         templateFile: './store-template/index.d.hbs',
         data: {
           name: data.name,
-          upperDataName,
+          upperDataName
         }
-      },
+      }
     ]
-    
+
     return actions
   }
 }

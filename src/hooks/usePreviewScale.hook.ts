@@ -7,10 +7,7 @@ export const usePreviewFitScale = (
   width: number,
   height: number,
   scaleDom: HTMLElement | null,
-  callback?: (scale: {
-    width: number;
-    height: number;
-  }) => void
+  callback?: (scale: { width: number; height: number }) => void
 ) => {
   // * 画布尺寸（px）
   const baseWidth = width
@@ -19,16 +16,14 @@ export const usePreviewFitScale = (
   // * 默认缩放值
   const scale = {
     width: 1,
-    height: 1,
+    height: 1
   }
 
   // * 需保持的比例
   const baseProportion = parseFloat((baseWidth / baseHeight).toFixed(5))
   const calcRate = () => {
     // 当前屏幕宽高比
-    const currentRate = parseFloat(
-      (window.innerWidth / window.innerHeight).toFixed(5)
-    )
+    const currentRate = parseFloat((window.innerWidth / window.innerHeight).toFixed(5))
     if (scaleDom) {
       if (currentRate > baseProportion) {
         // 表示更宽
@@ -37,7 +32,7 @@ export const usePreviewFitScale = (
         scaleDom.style.transform = `scale(${scale.width}, ${scale.height})`
       } else {
         // 表示更高
-        scale.height = parseFloat(((window.innerWidth / baseProportion) / baseHeight).toFixed(5))
+        scale.height = parseFloat((window.innerWidth / baseProportion / baseHeight).toFixed(5))
         scale.width = parseFloat((window.innerWidth / baseWidth).toFixed(5))
         scaleDom.style.transform = `scale(${scale.width}, ${scale.height})`
       }
@@ -62,7 +57,7 @@ export const usePreviewFitScale = (
   return {
     calcRate,
     windowResize,
-    unWindowResize,
+    unWindowResize
   }
 }
 
@@ -71,10 +66,7 @@ export const usePreviewScrollYScale = (
   width: number,
   height: number,
   scaleDom: HTMLElement | null,
-  callback?: (scale: {
-    width: number;
-    height: number;
-  }) => void
+  callback?: (scale: { width: number; height: number }) => void
 ) => {
   // * 画布尺寸（px）
   const baseWidth = width
@@ -83,14 +75,14 @@ export const usePreviewScrollYScale = (
   // * 默认缩放值
   const scale = {
     width: 1,
-    height: 1,
+    height: 1
   }
 
   // * 需保持的比例
   const baseProportion = parseFloat((baseWidth / baseHeight).toFixed(5))
   const calcRate = () => {
     if (scaleDom) {
-      scale.height = parseFloat(((window.innerWidth / baseProportion) / baseHeight).toFixed(5))
+      scale.height = parseFloat((window.innerWidth / baseProportion / baseHeight).toFixed(5))
       scale.width = parseFloat((window.innerWidth / baseWidth).toFixed(5))
       scaleDom.style.transform = `scale(${scale.width}, ${scale.height})`
       if (callback) callback(scale)
@@ -114,7 +106,7 @@ export const usePreviewScrollYScale = (
   return {
     calcRate,
     windowResize,
-    unWindowResize,
+    unWindowResize
   }
 }
 
@@ -123,10 +115,7 @@ export const usePreviewScrollXScale = (
   width: number,
   height: number,
   scaleDom: HTMLElement | null,
-  callback?: (scale: {
-    width: number;
-    height: number;
-  }) => void
+  callback?: (scale: { width: number; height: number }) => void
 ) => {
   // * 画布尺寸（px）
   const baseWidth = width
@@ -135,7 +124,7 @@ export const usePreviewScrollXScale = (
   // * 默认缩放值
   const scale = {
     height: 1,
-    width: 1,
+    width: 1
   }
 
   // * 需保持的比例
@@ -166,7 +155,7 @@ export const usePreviewScrollXScale = (
   return {
     calcRate,
     windowResize,
-    unWindowResize,
+    unWindowResize
   }
 }
 
@@ -175,16 +164,12 @@ export const usePreviewFullScale = (
   width: number,
   height: number,
   scaleDom: HTMLElement | null,
-  callback?: (scale: {
-    width: number;
-    height: number;
-  }) => void
+  callback?: (scale: { width: number; height: number }) => void
 ) => {
-
   // * 默认缩放值
   const scale = {
     width: 1,
-    height: 1,
+    height: 1
   }
 
   const calcRate = () => {
@@ -213,6 +198,6 @@ export const usePreviewFullScale = (
   return {
     calcRate,
     windowResize,
-    unWindowResize,
+    unWindowResize
   }
 }

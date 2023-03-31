@@ -21,7 +21,7 @@ export const useDesignStore = defineStore({
       themeName: (darkTheme && ThemeEnum.DARK) || ThemeEnum.LIGHT,
       // 颜色色号
       appTheme,
-      appThemeDetail,
+      appThemeDetail
     },
   getters: {
     getDarkTheme(e): boolean {

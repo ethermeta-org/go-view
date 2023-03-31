@@ -30,7 +30,7 @@ const global = {
   r_download: '下载',
   r_delete: '删除',
   r_delete_success: '删除成功！',
-  r_more: '更多',
+  r_more: '更多'
 }
 
 const http = {

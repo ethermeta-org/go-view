@@ -1,3 +1,3 @@
-import GoAppProvider from './index.vue';
+import GoAppProvider from './index.vue'
 
-export { GoAppProvider };
+export { GoAppProvider }
