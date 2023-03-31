@@ -16,14 +16,14 @@ $spacing-base-size: 1em;
 
 $spacing-types: (
   m: margin,
-  p: padding,
+  p: padding
 );
 
 $spacing-directions: (
   t: top,
   r: right,
   b: bottom,
-  l: left,
+  l: left
 );
 
 $spacing-sizes: (
@@ -32,7 +32,7 @@ $spacing-sizes: (
   2: 0.5,
   3: 1,
   4: 1.5,
-  5: 2.5,
+  5: 2.5
 );
 
 // 变亮值
@@ -76,8 +76,8 @@ $--footer-height: 50px;
 // 模糊
 $--filter-blur-base: blur(20px);
 // 毛玻璃
-$--filter-color-login-dark: rgba(35,35,36, 0.7);
-$--filter-color-login-dark-shallow: rgba(35,35,36, 0.3);
+$--filter-color-login-dark: rgba(35, 35, 36, 0.7);
+$--filter-color-login-dark-shallow: rgba(35, 35, 36, 0.3);
 $--filter-color-login-light: rgba(240, 240, 240, 0.7);
 $--filter-color-login-light-shallow: rgba(240, 240, 240, 0.3);
 

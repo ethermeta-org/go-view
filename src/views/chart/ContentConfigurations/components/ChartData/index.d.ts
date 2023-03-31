@@ -4,18 +4,18 @@ import { RequestHttpEnum, RequestHttpIntervalEnum, RequestDataTypeEnum, SelectHt
 export enum DataResultEnum {
   NULL = 0,
   SUCCESS = 1,
-  FAILURE = 2,
+  FAILURE = 2
 }
 
 export enum TimelineTitleEnum {
   FILTER = '数据过滤',
   MAPPING = '数据映射',
-  CONTENT = '数据内容',
+  CONTENT = '数据内容'
 }
 
 export enum SelectCreateDataEnum {
   STATIC = '静态数据',
-  AJAX = '动态请求',
+  AJAX = '动态请求'
 }
 
 export interface SelectCreateDataType {
@@ -73,7 +73,7 @@ export const selectTypeOptions: SelectHttpType[] = [
     style: {
       fontWeight: 'bold'
     }
-  },
+  }
 ]
 
 // ajax 请求间隔
@@ -100,5 +100,5 @@ export const selectTimeOptions: SelectHttpTimeType[] = [
   {
     label: SelectHttpTimeNameObj[RequestHttpIntervalEnum.DAY],
     value: RequestHttpIntervalEnum.DAY
-  },
+  }
 ]

@@ -95,7 +95,7 @@ export enum EventLife {
   // 渲染之后
   MOUNTED = 'vnodeMounted',
   // 渲染之前
-  BEFORE_MOUNT = 'vnodeBeforeMount',
+  BEFORE_MOUNT = 'vnodeBeforeMount'
 }
 
 // 组件实例类
@@ -131,7 +131,7 @@ export interface PublicConfigType {
 export interface CreateComponentType extends PublicConfigType, requestConfig {
   key: string
   chartConfig: ConfigType
-  option: GlobalThemeJsonType,
+  option: GlobalThemeJsonType
 }
 
 // 组件成组实例类

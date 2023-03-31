@@ -8,7 +8,7 @@ type LangStoreType = typeof useLangStore
 // 语言切换
 export const useLang = () => {
   const lang = useLangStore()
-  
+
   const locale = computed(() => {
     return lang.getLang === LangEnum.ZH ? zhCN : enUS
   })

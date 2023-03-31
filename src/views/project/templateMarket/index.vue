@@ -12,7 +12,7 @@ import { requireErrorImg } from '@/utils'
 </script>
 
 <style lang="scss" scoped>
-@include go("project-template-market") {
+@include go('project-template-market') {
   margin-top: 100px;
   @extend .go-flex-center;
 }

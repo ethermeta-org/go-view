@@ -45,7 +45,7 @@
   }
 }
 
-@mixin fetch-theme-custom ($key, $value) {
+@mixin fetch-theme-custom($key, $value) {
   @include themeify {
     #{$key}: themed($value);
   }

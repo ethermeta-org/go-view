@@ -26,7 +26,9 @@ export const option = {
   //右侧数据字体大小
   rightFontSize: 12,
   // 格式化
-  valueFormatter(item: { value: any}) { return item.value}
+  valueFormatter(item: { value: any }) {
+    return item.value
+  }
 }
 
 export default class Config extends PublicConfigClass implements CreateComponentType {

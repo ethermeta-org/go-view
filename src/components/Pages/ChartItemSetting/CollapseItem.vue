@@ -1,5 +1,5 @@
 <template>
-  <n-divider style="margin: 10px 0;"></n-divider>
+  <n-divider style="margin: 10px 0"></n-divider>
   <n-collapse arrow-placement="right" :default-expanded-names="expanded ? name : null" accordion>
     <!-- 右侧 -->
     <template #header-extra>
@@ -29,7 +29,7 @@ defineProps({
 
 // const name = new Date().getTime()
 
-const click = (e:MouseEvent) => {
+const click = (e: MouseEvent) => {
   e.preventDefault()
   e.stopPropagation()
 }

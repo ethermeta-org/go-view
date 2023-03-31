@@ -134,7 +134,7 @@ const apiList = [
   },
   {
     value: `【三维地球】${threeEarth01Url}`
-  },
+  }
 ]
 </script>
 

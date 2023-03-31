@@ -1,3 +1,3 @@
-import GoSystemInfo from './index.vue';
+import GoSystemInfo from './index.vue'
 
-export { GoSystemInfo };
+export { GoSystemInfo }

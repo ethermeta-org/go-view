@@ -23,18 +23,13 @@
         <n-input-number v-model:value="optionData.gradient.deg" size="small" placeholder="颜色旋转"></n-input-number>
       </setting-item>
     </setting-item-box>
-
   </collapse-item>
 </template>
 
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { option } from './config'
-import {
-  CollapseItem,
-  SettingItemBox,
-  SettingItem
-} from '@/components/Pages/ChartItemSetting'
+import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 
 const props = defineProps({
   optionData: {

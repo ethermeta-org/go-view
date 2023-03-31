@@ -1,3 +1,3 @@
-import LayoutTransitionMain from './index.vue';
+import LayoutTransitionMain from './index.vue'
 
-export { LayoutTransitionMain };
+export { LayoutTransitionMain }

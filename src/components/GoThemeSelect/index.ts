@@ -1,3 +1,3 @@
-import GoThemeSelect from './index.vue';
+import GoThemeSelect from './index.vue'
 
-export { GoThemeSelect };
+export { GoThemeSelect }

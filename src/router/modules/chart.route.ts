@@ -13,9 +13,8 @@ const chartRoutes: RouteRecordRaw = {
   meta: {
     title: '工作空间',
     isRoot: true,
-    noKeepAlive: true,
+    noKeepAlive: true
   }
 }
-
 
 export default chartRoutes

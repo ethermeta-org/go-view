@@ -93,7 +93,6 @@ watch(
   () => getDetails.value,
   () => ruleChangeHandleTimeOut()
 )
-
 </script>
 
 <style>

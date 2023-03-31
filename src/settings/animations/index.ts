@@ -10,7 +10,7 @@ export const animations = [
       { label: '左右扇形摇摆', value: 'swing' },
       { label: '放大晃动缩小', value: 'tada' },
       { label: '扇形摇摆', value: 'wobble' },
-      { label: '左右上下晃动', value: 'jello' },
+      { label: '左右上下晃动', value: 'jello' }
     ]
   },
   {

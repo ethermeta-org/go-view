@@ -2,7 +2,7 @@
   <div
     v-if="state.mergedConfig"
     class="go-dv-capsule-chart"
-    :style="{ 
+    :style="{
       fontSize: numberSizeHandle(state.mergedConfig.valueFontSize),
       paddingLeft: numberSizeHandle(state.mergedConfig.paddingLeft),
       paddingRight: numberSizeHandle(state.mergedConfig.paddingRight)

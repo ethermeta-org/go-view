@@ -104,7 +104,9 @@ import {
 
 const { targetData } = useTargetData()
 
-const { requestHttpType, requestContentType, requestSQLContent, requestParams, requestParamsBodyType } = toRefs(targetData.value.request)
+const { requestHttpType, requestContentType, requestSQLContent, requestParams, requestParamsBodyType } = toRefs(
+  targetData.value.request
+)
 
 const tabValue = ref<RequestParamsTypeEnum>(RequestParamsTypeEnum.PARAMS)
 

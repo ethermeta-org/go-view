@@ -15,12 +15,12 @@ export const WritingModeObject = {
 
 export enum FontWeightEnum {
   NORMAL = '常规',
-  BOLD = '加粗',
+  BOLD = '加粗'
 }
 
 export const FontWeightObject = {
   [FontWeightEnum.NORMAL]: 'normal',
-  [FontWeightEnum.BOLD]: 'bold',
+  [FontWeightEnum.BOLD]: 'bold'
 }
 
 export const option = {

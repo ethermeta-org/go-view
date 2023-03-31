@@ -6,13 +6,9 @@
           {{ statusDesc }}
         </n-text>
       </template>
-      <span>{{saveInterval}}s 更新一次</span>
+      <span>{{ saveInterval }}s 更新一次</span>
     </n-tooltip>
-    <n-spin
-      v-show="statusDesc === statusDescObj[1]['text']"
-      class="go-ml-2"
-      size="small"
-    >
+    <n-spin v-show="statusDesc === statusDescObj[1]['text']" class="go-ml-2" size="small">
       <template #icon>
         <n-icon size="13">
           <reload-icon />
@@ -45,20 +41,20 @@ let setTimeoutIns: NodeJS.Timeout = setTimeout(() => {})
 const statusDescObj = {
   [SyncEnum.PENDING]: {
     text: '等待自动同步',
-    type: '',
+    type: ''
   },
   [SyncEnum.START]: {
     text: '正在同步中',
-    type: 'success',
+    type: 'success'
   },
   [SyncEnum.SUCCESS]: {
     text: '同步成功！',
-    type: 'success',
+    type: 'success'
   },
   [SyncEnum.FAILURE]: {
     text: '同步失败!',
-    type: 'error',
-  },
+    type: 'error'
+  }
 }
 
 watch(
@@ -74,7 +70,7 @@ watch(
     }, 3000)
   },
   {
-    immediate: true,
+    immediate: true
   }
 )
 </script>

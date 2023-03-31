@@ -16,23 +16,23 @@ import type { ChartColorsNameType, GlobalThemeJsonType } from '@/settings/chartT
 // 项目数据枚举
 export enum ProjectInfoEnum {
   // ID
-  PROJECT_ID = "projectId",
+  PROJECT_ID = 'projectId',
   // 名称
   PROJECT_NAME = 'projectName',
   // 描述
   REMARKS = 'remarks',
   // 缩略图
-  THUMBNAIL= 'thumbnail',
+  THUMBNAIL = 'thumbnail',
   // 是否公开发布
   RELEASE = 'release'
 }
 
 // 项目数据
 export type ProjectInfoType = {
-  [ProjectInfoEnum.PROJECT_ID]: string,
-  [ProjectInfoEnum.PROJECT_NAME]: string,
-  [ProjectInfoEnum.REMARKS]: string,
-  [ProjectInfoEnum.THUMBNAIL]: string,
+  [ProjectInfoEnum.PROJECT_ID]: string
+  [ProjectInfoEnum.PROJECT_NAME]: string
+  [ProjectInfoEnum.REMARKS]: string
+  [ProjectInfoEnum.THUMBNAIL]: string
   [ProjectInfoEnum.RELEASE]: boolean
 }
 
@@ -88,11 +88,11 @@ export enum EditCanvasConfigEnum {
 // 画布属性（需保存）
 export type EditCanvasConfigType = {
   // ID
-  [EditCanvasConfigEnum.PROJECT_ID]: string,
+  [EditCanvasConfigEnum.PROJECT_ID]: string
   // 项目名称
-  [EditCanvasConfigEnum.PROJECT_NAME]: string,
+  [EditCanvasConfigEnum.PROJECT_NAME]: string
   // 项目描述
-  [EditCanvasConfigEnum.REMARKS]: string,
+  [EditCanvasConfigEnum.REMARKS]: string
   // 滤镜-启用
   [FilterEnum.FILTERS_SHOW]: boolean
   // 滤镜-色相

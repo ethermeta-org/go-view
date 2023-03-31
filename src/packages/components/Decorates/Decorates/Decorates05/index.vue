@@ -1,11 +1,7 @@
 <template>
   <div class="go-border-05">
     <svg :width="w" :height="h">
-      <polyline
-        :stroke="colors[1]"
-        stroke-width="2"
-        :points="`0, ${h / 2} ${w}, ${h / 2}`"
-      />
+      <polyline :stroke="colors[1]" stroke-width="2" :points="`0, ${h / 2} ${w}, ${h / 2}`" />
 
       <polyline
         :stroke="colors[0]"
@@ -152,8 +148,8 @@ import { getUUID } from '@/utils'
 const props = defineProps({
   chartConfig: {
     type: Object as PropType<CreateComponentType>,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const id = getUUID()

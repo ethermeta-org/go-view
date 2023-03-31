@@ -22,7 +22,7 @@
           :collapsed-width="getAsideCollapsedWidth"
           :collapsed-icon-size="22"
           :default-expanded-keys="defaultExpandedKeys"
-       ></n-menu>
+        ></n-menu>
       </aside>
       <!-- 底部提示 -->
       <div class="sider-bottom">
@@ -63,7 +63,7 @@ onMounted(() => {
   window.addEventListener('resize', watchWidth)
 })
 
-onUnmounted(()=> {
+onUnmounted(() => {
   window.removeEventListener('resize', watchWidth)
 })
 </script>

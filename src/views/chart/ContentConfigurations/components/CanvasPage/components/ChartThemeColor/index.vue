@@ -17,12 +17,9 @@
           v-for="colorItem in fetchShowColors(value.color)"
           :key="colorItem"
           :style="{ backgroundColor: colorItem }"
-       ></span>
+        ></span>
       </div>
-      <div
-        class="theme-bottom"
-        :style="{ backgroundImage: chartColorsshow[key] }"
-      ></div>
+      <div class="theme-bottom" :style="{ backgroundImage: chartColorsshow[key] }"></div>
     </n-card>
   </div>
 </template>
@@ -31,12 +28,7 @@
 import { computed } from 'vue'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
 import { EditCanvasConfigEnum } from '@/store/modules/chartEditStore/chartEditStore.d'
-import {
-  chartColors,
-  chartColorsName,
-  chartColorsshow,
-  ChartColorsNameType
-} from '@/settings/chartThemes/index'
+import { chartColors, chartColorsName, chartColorsshow, ChartColorsNameType } from '@/settings/chartThemes/index'
 import { useDesignStore } from '@/store/modules/designStore/designStore'
 import cloneDeep from 'lodash/cloneDeep'
 import { icon } from '@/plugins'
