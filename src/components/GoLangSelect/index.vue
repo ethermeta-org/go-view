@@ -1,10 +1,5 @@
 <template>
-  <n-dropdown
-    trigger="hover"
-    @select="handleSelect"
-    :show-arrow="true"
-    :options="options"
-  >
+  <n-dropdown trigger="hover" @select="handleSelect" :show-arrow="true" :options="options">
     <n-button quaternary>
       <n-icon size="20" :depth="1">
         <language-icon></language-icon>

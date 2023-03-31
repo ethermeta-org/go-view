@@ -1,6 +1,6 @@
 import image from '@/assets/images/chart/informations/text_gradient.png'
 import { ConfigType, PackagesCategoryEnum, ChartFrameEnum } from '@/packages/index.d'
-import { ChatCategoryEnum,ChatCategoryEnumName } from '../../index.d'
+import { ChatCategoryEnum, ChatCategoryEnumName } from '../../index.d'
 
 export const TextGradientConfig: ConfigType = {
   key: 'TextGradient',

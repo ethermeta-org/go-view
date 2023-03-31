@@ -11,10 +11,10 @@ module.exports = {
   // ts eslint 配置
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser:'@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser'
   },
   plugins: ['@typescript-eslint'],
-  extends: ['plugin:vue/vue3-recommended','plugin:@typescript-eslint/recommended'],
+  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended'],
   // js eslint 配置
   // parserOptions: {
   //   parser: 'babel-eslint',
@@ -259,4 +259,4 @@ module.exports = {
     'arrow-spacing': 0,
     'object-curly-spacing': 0
   }
-};
+}

@@ -99,19 +99,19 @@ export const option = {
         borderColor: 'rgba(147, 235, 248, 0.8)',
         textStyle: {
           color: '#FFFFFF',
-          fontSize: 12,
+          fontSize: 12
         }
       },
       label: {
         show: false,
         color: '#FFFFFF',
-        fontSize: 12,
+        fontSize: 12
       },
       emphasis: {
         disabled: false,
         label: {
           color: '#FFFFFF',
-          fontSize: 12,
+          fontSize: 12
         },
         itemStyle: {
           areaColor: '#389BB7',

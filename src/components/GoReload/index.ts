@@ -1,3 +1,3 @@
-import GoReload from './index.vue';
+import GoReload from './index.vue'
 
-export { GoReload };
+export { GoReload }

@@ -16,16 +16,12 @@
       <polyline
         class="go-border-line-3"
         :stroke="colors[1]"
-        :points="`10, 10 ${w - 16}, 10 ${w - 16}, ${h - 16} 10, ${
-          h - 16
-        } 10, 10`"
+        :points="`10, 10 ${w - 16}, 10 ${w - 16}, ${h - 16} 10, ${h - 16} 10, 10`"
       />
       <polyline
         class="go-border-line-3"
         :stroke="colors[1]"
-        :points="`16, 16 ${w - 10}, 16 ${w - 10}, ${h - 10} 16, ${
-          h - 10
-        } 16, 16`"
+        :points="`16, 16 ${w - 10}, 16 ${w - 10}, ${h - 10} 16, ${h - 10} 16, 16`"
       />
       <polyline
         class="go-border-line-3"

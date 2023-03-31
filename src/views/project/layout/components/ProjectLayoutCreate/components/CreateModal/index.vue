@@ -89,15 +89,15 @@ const btnHandle = async (key: string) => {
     case ChartEnum.CHART_HOME_NAME:
       try {
         // 新增项目
-        const res = await createProjectApi({
+        const res = (await createProjectApi({
           // 项目名称
           projectName: getUUID(),
           // remarks
           remarks: null,
           // 图片地址
-          indexImage: null,
-        }) as unknown as MyResponseType
-        if(res.code === ResultEnum.SUCCESS) {
+          indexImage: null
+        })) as unknown as MyResponseType
+        if (res.code === ResultEnum.SUCCESS) {
           window['$message'].success(window['$t']('project.create_success'))
 
           const { id } = res.data
@@ -108,14 +108,14 @@ const btnHandle = async (key: string) => {
       } catch (error) {
         window['$message'].error(window['$t']('project.create_failure'))
       }
-      break;
+      break
   }
 }
 </script>
 <style lang="scss" scoped>
 $cardWidth: 570px;
 
-@include go("create-modal") {
+@include go('create-modal') {
   position: fixed;
   top: 200px;
   left: 50%;
@@ -126,7 +126,7 @@ $cardWidth: 570px;
     border: 1px solid rgba(0, 0, 0, 0);
     @extend .go-transition;
     &:hover {
-      @include hover-border-color("hover-border-color");
+      @include hover-border-color('hover-border-color');
     }
     &-tite {
       font-size: 14px;

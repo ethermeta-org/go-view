@@ -21,11 +21,7 @@
         :d="`M 16 9 L 61 9`"
       />
 
-      <path
-        fill="transparent"
-        :stroke="colors[1]"
-        :d="`M 5 20 L 5 10 L 12 3  L 60 3 L 68 10`"
-      />
+      <path fill="transparent" :stroke="colors[1]" :d="`M 5 20 L 5 10 L 12 3  L 60 3 L 68 10`" />
 
       <path
         fill="transparent"
@@ -52,5 +48,6 @@ const { colors, backgroundColor } = toRefs(props.chartConfig.option)
 </script>
 
 <style lang="scss" scoped>
-@include go('border-box') {}
+@include go('border-box') {
+}
 </style>

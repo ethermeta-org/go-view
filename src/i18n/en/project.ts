@@ -10,7 +10,7 @@ export default {
   my_templete: 'My Templete',
   template_market: 'Template Market',
 
-  // items 
+  // items
   release: 'Release',
   unreleased: 'Unrelease',
   last_edit: 'Last edit time'

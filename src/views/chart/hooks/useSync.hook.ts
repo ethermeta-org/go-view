@@ -1,8 +1,13 @@
-import { onUnmounted } from 'vue';
+import { onUnmounted } from 'vue'
 import html2canvas from 'html2canvas'
 import { getUUID, httpErrorHandle, fetchRouteParamsLocation } from '@/utils'
 import { useChartEditStore } from '@/store/modules/chartEditStore/chartEditStore'
-import { EditCanvasTypeEnum, ChartEditStoreEnum, ProjectInfoEnum, ChartEditStorage } from '@/store/modules/chartEditStore/chartEditStore.d'
+import {
+  EditCanvasTypeEnum,
+  ChartEditStoreEnum,
+  ProjectInfoEnum,
+  ChartEditStorage
+} from '@/store/modules/chartEditStore/chartEditStore.d'
 import { useChartHistoryStore } from '@/store/modules/chartHistoryStore/chartHistoryStore'
 // import { useSystemStore } from '@/store/modules/systemStore/systemStore'
 import { fetchChartComponent, fetchConfigComponent, createComponent } from '@/packages/index'
@@ -70,7 +75,7 @@ export const useSync = () => {
       }
 
       if (e.isGroup) {
-        (e as CreateComponentGroupType).groupList.forEach(groupItem => {
+        ;(e as CreateComponentGroupType).groupList.forEach(groupItem => {
           intComponent(groupItem)
         })
       } else {
@@ -147,10 +152,10 @@ export const useSync = () => {
    * @returns
    */
   const updateStoreInfo = (projectData: {
-    id: string,
-    projectName: string,
-    indexImage: string,
-    remarks: string,
+    id: string
+    projectName: string
+    indexImage: string
+    remarks: string
     state: number
   }) => {
     const { id, projectName, remarks, indexImage, state } = projectData
@@ -170,7 +175,7 @@ export const useSync = () => {
   const dataSyncFetch = async () => {
     chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.START)
     try {
-      const res = await fetchProjectApi({ projectId: fetchRouteParamsLocation() }) as unknown as MyResponseType
+      const res = (await fetchProjectApi({ projectId: fetchRouteParamsLocation() })) as unknown as MyResponseType
       if (res.code === ResultEnum.SUCCESS) {
         if (res.data) {
           updateStoreInfo(res.data)
@@ -178,7 +183,7 @@ export const useSync = () => {
           if (res.data.content) {
             await updateComponent(JSON.parse(res.data.content))
           }
-        }else {
+        } else {
           window['$message'].error('数据初未始化成功,请刷新页面！')
           chartEditStore.setProjectInfo(ProjectInfoEnum.PROJECT_ID, fetchRouteParamsLocation())
         }
@@ -190,21 +195,21 @@ export const useSync = () => {
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
     } catch (error) {
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
-      httpErrorHandle('数据获取');
-      console.log('数据获取:', error);
+      httpErrorHandle('数据获取')
+      console.log('数据获取:', error)
     }
   }
 
   // * 数据保存
   const dataSyncUpdate = throttle(async () => {
     try {
-      if(!fetchRouteParamsLocation()) return
+      if (!fetchRouteParamsLocation()) return
 
-    const projectId = chartEditStore.getProjectInfo[ProjectInfoEnum.PROJECT_ID];
-    if(projectId === null || projectId === ''){
-      window['$message'].error('数据初未始化成功,请刷新页面！')
-      return
-    }
+      const projectId = chartEditStore.getProjectInfo[ProjectInfoEnum.PROJECT_ID]
+      if (projectId === null || projectId === '') {
+        window['$message'].error('数据初未始化成功,请刷新页面！')
+        return
+      }
 
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.START)
 
@@ -237,9 +242,10 @@ export const useSync = () => {
       const params = new FormData()
       params.append('projectId', projectId)
       params.append('content', JSON.stringify(chartEditStore.getStorageInfo || {}))
-      const res = await saveProjectApi(params) as unknown as MyResponseType
-      if (res?.code=== ResultEnum.REQUEST_DATA_ERROR) { // 请求参数数据错误
-        throw (res.msg)
+      const res = (await saveProjectApi(params)) as unknown as MyResponseType
+      if (res?.code === ResultEnum.REQUEST_DATA_ERROR) {
+        // 请求参数数据错误
+        throw res.msg
       }
       if (res?.code === ResultEnum.SUCCESS) {
         // 成功状态
@@ -250,9 +256,9 @@ export const useSync = () => {
       }
       // 失败状态
       chartEditStore.setEditCanvas(EditCanvasTypeEnum.SAVE_STATUS, SyncEnum.FAILURE)
-    }catch (e) {
-      console.log(e);
-      window['$message'].error(`保存数据失败：${e}`);
+    } catch (e) {
+      console.log(e)
+      window['$message'].error(`保存数据失败：${e}`)
     }
   }, 3000)
 

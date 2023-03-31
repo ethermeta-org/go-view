@@ -18,78 +18,45 @@
         ></n-input-number>
       </SettingItem>
       <SettingItem name="数值单位">
-        <n-input
-          v-model:value="optionData.unit"
-          size="small"
-          placeholder="数值单位"
-        ></n-input>
+        <n-input v-model:value="optionData.unit" size="small" placeholder="数值单位"></n-input>
       </SettingItem>
     </SettingItemBox>
 
     <SettingItemBox name="样式">
       <SettingItem name="主体颜色">
-        <n-color-picker
-          size="small"
-          :modes="['hex']"
-          v-model:value="optionData.color"
-        ></n-color-picker>
+        <n-color-picker size="small" :modes="['hex']" v-model:value="optionData.color"></n-color-picker>
       </SettingItem>
       <SettingItem name="数据颜色">
-        <n-color-picker
-          size="small"
-          :modes="['hex']"
-          v-model:value="optionData.textColor"
-        ></n-color-picker>
+        <n-color-picker size="small" :modes="['hex']" v-model:value="optionData.textColor"></n-color-picker>
       </SettingItem>
       <SettingItem name="底部线条">
-        <n-color-picker
-          size="small"
-          :modes="['hex']"
-          v-model:value="optionData.borderColor"
-        ></n-color-picker>
+        <n-color-picker size="small" :modes="['hex']" v-model:value="optionData.borderColor"></n-color-picker>
       </SettingItem>
     </SettingItemBox>
 
     <SettingItemBox name="字体样式">
-       <SettingItem name="序号字体">
-        <n-input-number
-          size="small"
-          v-model:value="optionData.indexFontSize"
-          :min="12"
-        />
+      <SettingItem name="序号字体">
+        <n-input-number size="small" v-model:value="optionData.indexFontSize" :min="12" />
       </SettingItem>
       <SettingItem name="左侧数据字体">
-        <n-input-number
-          size="small"
-          v-model:value="optionData.leftFontSize"
-          :min="12"
-        />
+        <n-input-number size="small" v-model:value="optionData.leftFontSize" :min="12" />
       </SettingItem>
       <SettingItem name="右侧数据字体">
-        <n-input-number
-          size="small"
-          v-model:value="optionData.rightFontSize"
-          :min="12"
-        />
+        <n-input-number size="small" v-model:value="optionData.rightFontSize" :min="12" />
       </SettingItem>
     </SettingItemBox>
-      
   </CollapseItem>
 </template>
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import {
-  CollapseItem,
-  SettingItemBox,
-  SettingItem,
-} from '@/components/Pages/ChartItemSetting'
+import { CollapseItem, SettingItemBox, SettingItem } from '@/components/Pages/ChartItemSetting'
 import { option } from './config'
 
 const props = defineProps({
   optionData: {
     type: Object as PropType<typeof option>,
-    required: true,
-  },
+    required: true
+  }
 })
 </script>

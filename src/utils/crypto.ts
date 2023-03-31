@@ -6,7 +6,7 @@ const KEY = 'mt'
 /**
  * * 加密
  * @param data { string }
- * @returns 
+ * @returns
  */
 export const cryptoEncode = (data: string): string => {
   if (!isString(data)) return ''
@@ -21,7 +21,7 @@ export const cryptoEncode = (data: string): string => {
 /**
  * * 解密
  * @param data { string }
- * @returns 
+ * @returns
  */
 export const cryptoDecode = (data: string): string => {
   if (!isString(data)) return ''

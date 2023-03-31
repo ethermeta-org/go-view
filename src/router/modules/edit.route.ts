@@ -16,5 +16,4 @@ const chartRoutes: RouteRecordRaw = {
   }
 }
 
-
 export default chartRoutes

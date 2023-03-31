@@ -1,6 +1,4 @@
 {
   "dimensions": ["value"],
-  "source": [
-    [80]
-  ]
+  "source": [[80]]
 }

@@ -6,10 +6,10 @@ import designColor from './designColor.json'
 export const lang = LangEnum.ZH
 
 // 水印文字
-export const watermarkText = "GoView 低代码平台"
+export const watermarkText = 'GoView 低代码平台'
 
 // 分组名称
-export const groupTitle = "分组"
+export const groupTitle = '分组'
 
 // 主题配置
 export const theme = {
@@ -17,7 +17,7 @@ export const theme = {
   darkTheme: true,
   //默认主题色
   appTheme: '#51d6a9',
-  appThemeDetail: null,
+  appThemeDetail: null
 }
 
 // 图表初始配置(px)
@@ -28,7 +28,7 @@ export const chartInitConfig = {
   h: 300,
   // 不建议动 offset
   offsetX: 0,
-  offsetY: 0,
+  offsetY: 0
 }
 
 // dialog 图标的大小

@@ -35,32 +35,30 @@ export const loadingError = () => {
  * })
  * ```
  */
- export const goDialog = (
-  params: {
-    // 基本
-    type?: DialogEnum
-    // 标题
-    title?: string | (() => any)
-    // 提示
-    message?: string
-    // 确定提示词
-    positiveText?: string
-    // 取消提示词
-    negativeText?: string
-    // 是否不展示取消按钮
-    closeNegativeText?: boolean,
-    // 点击遮罩是否关闭
-    isMaskClosable?: boolean
-    // 回调
-    onPositiveCallback: Function
-    onNegativeCallback?: Function
-    // 异步
-    promise?: boolean
-    promiseResCallback?: Function
-    promiseRejCallback?: Function
-    [T:string]: any
-  }
-) => {
+export const goDialog = (params: {
+  // 基本
+  type?: DialogEnum
+  // 标题
+  title?: string | (() => any)
+  // 提示
+  message?: string
+  // 确定提示词
+  positiveText?: string
+  // 取消提示词
+  negativeText?: string
+  // 是否不展示取消按钮
+  closeNegativeText?: boolean
+  // 点击遮罩是否关闭
+  isMaskClosable?: boolean
+  // 回调
+  onPositiveCallback: Function
+  onNegativeCallback?: Function
+  // 异步
+  promise?: boolean
+  promiseResCallback?: Function
+  promiseRejCallback?: Function
+  [T: string]: any
+}) => {
   const {
     type,
     title,
@@ -104,7 +102,7 @@ export const loadingError = () => {
     icon: renderIcon(InformationCircleIcon, { size: dialogIconSize }),
     content: typeObj[type || DialogEnum.WARNING]['message'],
     positiveText: positiveText || '确定',
-    negativeText: closeNegativeText ? undefined : (negativeText || '取消'),
+    negativeText: closeNegativeText ? undefined : negativeText || '取消',
     // 是否通过遮罩关闭
     maskClosable: isMaskClosable || maskClosable,
     onPositiveClick: async () => {

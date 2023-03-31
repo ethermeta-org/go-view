@@ -31,7 +31,7 @@ export const shapes = [
   {
     label: '箭头',
     value: 'arrow'
-  },
+  }
 ]
 
 export const includes = []
@@ -55,27 +55,27 @@ export const option = {
           colorStops: [
             {
               offset: 0,
-              color: '#446bf5',
+              color: '#446bf5'
             },
             {
               offset: 1,
-              color: '#2ca3e2',
-            },
+              color: '#2ca3e2'
+            }
           ],
-          globalCoord: false,
-        },
+          globalCoord: false
+        }
       ],
       backgroundStyle: {
         borderWidth: 1,
-        color: 'rgba(51, 66, 127, 0.7)',
+        color: 'rgba(51, 66, 127, 0.7)'
       },
       label: {
         normal: {
           textStyle: {
             fontSize: 50,
-            color: '#fff',
-          },
-        },
+            color: '#fff'
+          }
+        }
       },
       outline: {
         show: false,
@@ -89,8 +89,7 @@ export const option = {
   ]
 }
 
-export default class Config extends PublicConfigClass implements CreateComponentType
-{
+export default class Config extends PublicConfigClass implements CreateComponentType {
   public key = WaterPoloConfig.key
   public chartConfig = cloneDeep(WaterPoloConfig)
   public option = echartOptionProfixHandle(option, includes)

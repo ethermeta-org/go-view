@@ -25,7 +25,7 @@ export const useLangStore = defineStore({
   actions: {
     changeLang(lang: LangEnum): void {
       const settingStore = useSettingStore()
-      
+
       if (this.lang === lang) return
       this.lang = lang
       i18n.global.locale = lang

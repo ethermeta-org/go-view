@@ -26,11 +26,7 @@
 
       <div class="search-list-box">
         <n-scrollbar style="max-height: 500px">
-          <n-empty
-            v-show="!searchRes.length"
-            size="small"
-            description="没有找到组件~"
-          ></n-empty>
+          <n-empty v-show="!searchRes.length" size="small" description="没有找到组件~"></n-empty>
           <div
             class="list-item go-flex-items-center go-ellipsis-1"
             v-for="item in searchRes"
@@ -57,18 +53,13 @@ import { ConfigType, CreateComponentType } from '@/packages/index.d'
 import { createComponent } from '@/packages'
 import { isString, addEventListener, removeEventListener } from '@/utils'
 import { fetchConfigComponent, fetchChartComponent } from '@/packages/index'
-import {
-  componentInstall,
-  loadingStart,
-  loadingFinish,
-  loadingError,
-} from '@/utils'
+import { componentInstall, loadingStart, loadingFinish, loadingError } from '@/utils'
 
 const props = defineProps({
   menuOptions: {
     type: Array,
-    default: () => [],
-  },
+    default: () => []
+  }
 })
 
 const { SearchIcon } = icon.ionicons5
@@ -106,9 +97,7 @@ const searchHandle = (key: string | null) => {
   }
   loading.value = true
   showPopover.value = true
-  searchRes.value = List.filter(
-    (e: ConfigType) => !key || e.title.toLowerCase().includes(key.toLowerCase())
-  )
+  searchRes.value = List.filter((e: ConfigType) => !key || e.title.toLowerCase().includes(key.toLowerCase()))
   setTimeout(() => {
     loading.value = undefined
   }, 500)
