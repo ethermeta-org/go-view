@@ -1,5 +1,5 @@
 const storeGenerator = require('./store-template/prompt')
 
-module.exports = (plop) => {
+module.exports = plop => {
   plop.setGenerator('store', storeGenerator)
 }

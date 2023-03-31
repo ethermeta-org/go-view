@@ -22,46 +22,14 @@
           14, ${h - 100}`"
       />
 
-      <polyline
-        class="go-border-line-3"
-        :stroke="colors[0]"
-        :points="`7, ${h - 40} 7, ${h - 75}`"
-      />
-      <polyline
-        class="go-border-line-4"
-        :stroke="colors[0]"
-        :points="`28, 24 13, 41 13, 64`"
-      />
-      <polyline
-        class="go-border-line-5"
-        :stroke="colors[0]"
-        :points="`5, 45 5, 140`"
-      />
-      <polyline
-        class="go-border-line-6"
-        :stroke="colors[1]"
-        :points="`14, 75 14, 180`"
-      />
-      <polyline
-        class="go-border-line-7"
-        :stroke="colors[1]"
-        :points="`55, 11 147, 11 167, 26 250, 26`"
-      />
-      <polyline
-        class="go-border-line-8"
-        :stroke="colors[1]"
-        :points="`158, 5 173, 16`"
-      />
-      <polyline
-        class="go-border-line-9"
-        :stroke="colors[0]"
-        :points="`200, 17 ${w - 10}, 17`"
-      />
-      <polyline
-        class="go-border-line-10"
-        :stroke="colors[1]"
-        :points="`385, 17 ${w - 10}, 17`"
-      />
+      <polyline class="go-border-line-3" :stroke="colors[0]" :points="`7, ${h - 40} 7, ${h - 75}`" />
+      <polyline class="go-border-line-4" :stroke="colors[0]" :points="`28, 24 13, 41 13, 64`" />
+      <polyline class="go-border-line-5" :stroke="colors[0]" :points="`5, 45 5, 140`" />
+      <polyline class="go-border-line-6" :stroke="colors[1]" :points="`14, 75 14, 180`" />
+      <polyline class="go-border-line-7" :stroke="colors[1]" :points="`55, 11 147, 11 167, 26 250, 26`" />
+      <polyline class="go-border-line-8" :stroke="colors[1]" :points="`158, 5 173, 16`" />
+      <polyline class="go-border-line-9" :stroke="colors[0]" :points="`200, 17 ${w - 10}, 17`" />
+      <polyline class="go-border-line-10" :stroke="colors[1]" :points="`385, 17 ${w - 10}, 17`" />
     </svg>
   </div>
 </template>

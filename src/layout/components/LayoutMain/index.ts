@@ -1,3 +1,3 @@
-import LayoutMain from './index.vue';
+import LayoutMain from './index.vue'
 
-export { LayoutMain };
+export { LayoutMain }

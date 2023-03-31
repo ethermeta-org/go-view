@@ -69,11 +69,7 @@
         </n-space>
       </SettingItem>
       <SettingItem name="字体颜色">
-        <n-color-picker
-          size="small"
-          :modes="['hex']"
-          v-model:value="seriesList[1].label.color"
-        ></n-color-picker>
+        <n-color-picker size="small" :modes="['hex']" v-model:value="seriesList[1].label.color"></n-color-picker>
       </SettingItem>
       <SettingItem name="字体大小">
         <n-input-number
@@ -129,7 +125,7 @@
         ></n-color-picker>
       </SettingItem>
     </SettingItemBox>
-    
+
     <SettingItemBox name="悬浮弹窗">
       <SettingItem name="显示">
         <n-space>
@@ -191,7 +187,7 @@
         <n-color-picker size="small" :modes="['hex']" v-model:value="seriesList[0].itemStyle.color"></n-color-picker>
       </SettingItem>
     </SettingItemBox>
-      
+
     <SettingItemBox name="文本">
       <SettingItem name="显示">
         <n-space>

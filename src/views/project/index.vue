@@ -6,12 +6,7 @@
       </n-space>
       <n-layout>
         <layout-header-pro></layout-header-pro>
-        <n-layout
-          id="go-project-content-top"
-          class="content-top"
-          position="absolute"
-          :native-scrollbar="false"
-        >
+        <n-layout id="go-project-content-top" class="content-top" position="absolute" :native-scrollbar="false">
           <n-layout-content>
             <layout-transition-main>
               <router-view></router-view>

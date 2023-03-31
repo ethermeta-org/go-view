@@ -35,8 +35,8 @@ import { CreateComponentType } from '@/packages/index.d'
 const props = defineProps({
   chartConfig: {
     type: Object as PropType<CreateComponentType>,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const { w, h } = toRefs(props.chartConfig.attr)

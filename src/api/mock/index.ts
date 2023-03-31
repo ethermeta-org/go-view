@@ -102,7 +102,7 @@ const mockObject: MockMethod[] = [
     url: threeEarth01Url,
     method: RequestHttpEnum.GET,
     response: () => test.threeEarth01Data
-  },
+  }
 ]
 
 export default mockObject

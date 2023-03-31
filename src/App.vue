@@ -30,5 +30,4 @@ const hljsTheme = useCode()
 
 // 全局语言
 const { locale, dateLocale } = useLang()
-
 </script>

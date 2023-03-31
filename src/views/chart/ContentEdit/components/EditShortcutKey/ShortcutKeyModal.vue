@@ -116,7 +116,7 @@ const shortcutKeyOptions = [
   {
     label: '保存',
     win: `${WinKeyboard.CTRL.toUpperCase()} + S `,
-    mac: `${MacKeyboard.CTRL.toUpperCase()} + S `,
+    mac: `${MacKeyboard.CTRL.toUpperCase()} + S `
   },
   {
     label: '多选',

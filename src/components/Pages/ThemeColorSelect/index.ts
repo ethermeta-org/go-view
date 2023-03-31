@@ -1,3 +1,3 @@
-import ThemeColorSelect from './index.vue';
+import ThemeColorSelect from './index.vue'
 
-export { ThemeColorSelect };
+export { ThemeColorSelect }

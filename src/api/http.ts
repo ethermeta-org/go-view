@@ -13,7 +13,7 @@ export const get = (url: string, params?: object) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.GET,
-    params: params,
+    params: params
   })
 }
 
@@ -86,7 +86,7 @@ export const translateStr = (target: string | object) => {
   if (typeof target === 'string') {
     if (target.startsWith(prefix)) {
       const funcStr = target.split(prefix)[1]
-      let result;
+      let result
       try {
         result = new Function(`${funcStr}`)()
       } catch (error) {
@@ -100,8 +100,8 @@ export const translateStr = (target: string | object) => {
   }
   for (const key in target) {
     if (Object.prototype.hasOwnProperty.call(target, key)) {
-      const subTarget = (target as any)[key];
-      (target as any)[key] = translateStr(subTarget)
+      const subTarget = (target as any)[key]
+      ;(target as any)[key] = translateStr(subTarget)
     }
   }
   return target
@@ -211,13 +211,13 @@ export const customizeHttp = (targetParams: RequestConfigType, globalParams: Req
   }
 
   try {
-    const url =  (new Function("return `" + `${requestOriginUrl}${requestUrl}`.trim() + "`"))();
+    const url = new Function('return `' + `${requestOriginUrl}${requestUrl}`.trim() + '`')()
     return axiosInstance({
-        url,
-        method: requestHttpType,
-        data,
-        params,
-        headers
+      url,
+      method: requestHttpType,
+      data,
+      params,
+      headers
     })
   } catch (error) {
     console.log(error)

@@ -2,5 +2,5 @@
  * * 请求失败统一处理
  */
 export const httpErrorHandle = (where?: string) => {
-  window['$message'].error(window['$t']('http.error_message') + (where || ''), {duration: 5000})
+  window['$message'].error(window['$t']('http.error_message') + (where || ''), { duration: 5000 })
 }

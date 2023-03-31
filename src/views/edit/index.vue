@@ -26,7 +26,7 @@
             lineNumbers: 'on',
             minimap: { enabled: true }
           }"
-      />
+        />
       </n-layout-content>
     </n-layout>
   </div>

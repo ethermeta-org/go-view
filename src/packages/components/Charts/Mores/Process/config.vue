@@ -41,7 +41,7 @@
       <SettingItem name="文本颜色">
         <n-color-picker size="small" :modes="['hex']" v-model:value="optionData.indicatorTextColor"></n-color-picker>
       </SettingItem>
-       <setting-item name="文本大小">
+      <setting-item name="文本大小">
         <n-input-number v-model:value="optionData.indicatorTextSize" size="small"></n-input-number>
       </setting-item>
     </SettingItemBox>
