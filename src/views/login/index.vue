@@ -129,6 +129,7 @@ import { PageEnum } from '@/enums/pageEnum'
 import { icon } from '@/plugins'
 import { routerTurnByName } from '@/utils'
 import { loginApi } from '@/api/path'
+import {MyResponseType} from "@/api/axios";
 interface FormState {
   username: string
   password: string
@@ -195,7 +196,7 @@ const handleSubmit = async (e: Event) => {
       const res = await loginApi({
         username,
         password
-      }) as unknown as MyResponseType
+      }) as unknown as MyResponseType<any>
       if(res.data) {
         const { tokenValue, tokenName } = res.data.token
         const { nickname, username, id, avatar } = res.data.userinfo
