@@ -24,17 +24,13 @@
     </layout-header>
     <div class="go-login">
       <div class="go-login-carousel">
-        <n-carousel
-            autoplay
-            dot-type="line"
-            :interval="Number(carouselInterval)"
-        >
+        <n-carousel autoplay dot-type="line" :interval="Number(carouselInterval)">
           <img
-              v-for="(item, i) in carouselImgList"
-              :key="i"
-              class="go-login-carousel-img"
-              :src="getImageUrl(item, 'login')"
-              alt="image"
+            v-for="(item, i) in carouselImgList"
+            :key="i"
+            class="go-login-carousel-img"
+            :src="getImageUrl(item, 'login')"
+            alt="image"
           />
         </n-carousel>
       </div>
@@ -43,24 +39,11 @@
           <n-collapse-transition :appear="true" :show="show">
             <n-card class="login-account-card" :title="$t('login.desc')">
               <div class="login-account-top">
-                <img
-                    class="login-account-top-logo"
-                    src="~@/assets/images/login/input.png"
-                    alt="展示图片"
-                />
+                <img class="login-account-top-logo" src="~@/assets/images/login/input.png" alt="展示图片" />
               </div>
-              <n-form
-                  ref="formRef"
-                  label-placement="left"
-                  size="large"
-                  :model="formInline"
-                  :rules="rules"
-              >
+              <n-form ref="formRef" label-placement="left" size="large" :model="formInline" :rules="rules">
                 <n-form-item path="username">
-                  <n-input
-                      v-model:value="formInline.username"
-                      :placeholder="$t('global.form_account')"
-                  >
+                  <n-input v-model:value="formInline.username" :placeholder="$t('global.form_account')">
                     <template #prefix>
                       <n-icon size="18">
                         <PersonOutlineIcon></PersonOutlineIcon>
@@ -70,10 +53,10 @@
                 </n-form-item>
                 <n-form-item path="password">
                   <n-input
-                      v-model:value="formInline.password"
-                      type="password"
-                      show-password-on="click"
-                      :placeholder="$t('global.form_password')"
+                    v-model:value="formInline.password"
+                    type="password"
+                    show-password-on="click"
+                    :placeholder="$t('global.form_password')"
                   >
                     <template #prefix>
                       <n-icon size="18">
@@ -85,21 +68,14 @@
                 <n-form-item>
                   <div class="flex justify-between">
                     <div class="flex-initial">
-                      <n-checkbox v-model:checked="autoLogin">{{
-                          $t('login.form_auto')
-                        }}</n-checkbox>
+                      <n-checkbox v-model:checked="autoLogin">{{ $t('login.form_auto') }}</n-checkbox>
                     </div>
                   </div>
                 </n-form-item>
                 <n-form-item>
-                  <n-button
-                      type="primary"
-                      @click="handleSubmit"
-                      size="large"
-                      :loading="loading"
-                      block
-                  >{{ $t('login.form_button') }}</n-button
-                  >
+                  <n-button type="primary" @click="handleSubmit" size="large" :loading="loading" block>{{
+                    $t('login.form_button')
+                  }}</n-button>
                 </n-form-item>
               </n-form>
             </n-card>
@@ -129,7 +105,7 @@ import { PageEnum } from '@/enums/pageEnum'
 import { icon } from '@/plugins'
 import { routerTurnByName } from '@/utils'
 import { loginApi } from '@/api/path'
-import {MyResponseType} from "@/api/axios";
+import { MyResponseType } from '@/api/axios'
 interface FormState {
   username: string
   password: string
@@ -145,36 +121,26 @@ const systemStore = useSystemStore()
 const t = window['$t']
 const formInline: FormState = reactive({
   username: 'admin',
-  password: 'admin',
+  password: 'admin'
 })
 const rules = {
   username: {
     required: true,
     message: t('global.form_account'),
-    trigger: 'blur',
+    trigger: 'blur'
   },
   password: {
     required: true,
     message: t('global.form_password'),
-    trigger: 'blur',
-  },
+    trigger: 'blur'
+  }
 }
 // 定时器
 const shuffleTimiing = ref()
 // 轮播图
 const carouselImgList = ['one', 'two', 'three']
 // 背景图
-const bgList = ref([
-  'bar_y',
-  'bar_x',
-  'line_gradient',
-  'line',
-  'funnel',
-  'heatmap',
-  'map',
-  'pie',
-  'radar',
-])
+const bgList = ref(['bar_y', 'bar_x', 'line_gradient', 'line', 'funnel', 'heatmap', 'map', 'pie', 'radar'])
 // 处理url获取
 const getImageUrl = (name: string, folder: string) => {
   return new URL(`../../assets/images/${folder}/${name}.png`, import.meta.url).href
@@ -193,11 +159,11 @@ const handleSubmit = async (e: Event) => {
       const { username, password } = formInline
       loading.value = true
       // 提交请求
-      const res = await loginApi({
+      const res = (await loginApi({
         username,
         password
-      }) as unknown as MyResponseType<any>
-      if(res.data) {
+      })) as unknown as MyResponseType<any>
+      if (res.data) {
         const { tokenValue, tokenName } = res.data.token
         const { nickname, username, id, avatar } = res.data.userinfo
         // 存储到 pinia
